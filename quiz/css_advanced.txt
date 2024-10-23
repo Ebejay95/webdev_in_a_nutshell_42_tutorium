@@ -1,0 +1,140 @@
+What is the purpose of CSS Custom Properties (variables)?
+To store temporary values
+To create reusable values
+To compute values
+To override properties
+2
+CSS Custom Properties (--variable-name) allow for reusable values and easier theming.
+Which selector has the highest specificity?
+.class
+#id
+element
+*
+2
+ID selectors have higher specificity than class or element selectors.
+What is the purpose of the CSS calc() function?
+To calculate specificity
+To perform mathematical operations
+To compute color values
+To calculate load times
+2
+calc() performs mathematical operations with different units in CSS.
+How do you create a CSS Grid with 3 equal columns?
+grid-template-columns: 3
+grid-template-columns: repeat(3, 1fr)
+grid-columns: 3
+columns: 3
+2
+repeat(3, 1fr) creates three equally-sized columns in a grid.
+What is the purpose of the CSS transform property?
+To convert units
+To modify element appearance
+To transform text
+To change color space
+2
+transform modifies the appearance of elements through rotation, scaling, etc.
+Which value of position creates a new stacking context?
+relative
+absolute
+fixed
+All of the above
+4
+All positioned elements (except relative without z-index) create new stacking contexts.
+What is the purpose of CSS Logical Properties?
+To add programming logic
+To handle different writing modes
+To validate styles
+To compute values
+2
+Logical Properties adapt to different writing modes and document directions.
+How do you create a CSS counter?
+@counter
+counter-increment
+counting
+increment-by
+2
+counter-increment creates and increases a CSS counter.
+What is the purpose of the :root selector?
+To select all elements
+To select the top element
+To select the html element
+To select document root
+4
+:root selects the root element, typically used for defining custom properties.
+How do you apply styles when printing?
+@print
+@media print
+print:
+@page
+2
+@media print applies styles specifically for printed documents.
+What is the purpose of CSS Containment?
+To contain floats
+To improve performance
+To contain overflows
+To limit scope
+2
+CSS Containment helps browsers optimize rendering performance.
+How do you create a CSS triangle?
+shape: triangle
+border manipulation
+triangle: true
+@shape triangle
+2
+CSS triangles are created using border properties creatively.
+What is the purpose of CSS Feature Queries?
+To detect browser features
+To query databases
+To test performance
+To check compatibility
+1
+@supports checks if browsers support specific CSS features.
+How do you create a CSS grid area?
+grid-area: name
+area: name
+grid-template-area: name
+@grid area
+1
+grid-area names a grid item for use in grid-template-areas.
+What is the purpose of CSS aspect-ratio?
+To maintain image quality
+To maintain element proportions
+To scale elements
+To resize images
+2
+aspect-ratio maintains proportional dimensions of elements.
+How do you create a CSS custom property?
+@property
+--property-name
+$property
+custom-property
+2
+Custom properties (variables) are declared using -- prefix.
+What is the purpose of the :is() selector?
+To check conditions
+To group selectors
+To test values
+To validate input
+2
+:is() groups selectors and reduces repetition in selectors.
+What is the purpose of CSS scroll-snap?
+To prevent scrolling
+To create smooth scrolling
+To control scroll positions
+To disable scrolling
+3
+scroll-snap controls scroll position after scrolling actions.
+How do you create a CSS gradient?
+@gradient
+gradient()
+linear-gradient()
+create-gradient()
+3
+linear-gradient() creates a gradual transition between colors.
+What is the purpose of CSS Grid auto-fit?
+To fit content automatically
+To create responsive grids
+To size grids
+All of the above
+4
+auto-fit creates responsive grid layouts that adjust to container size.

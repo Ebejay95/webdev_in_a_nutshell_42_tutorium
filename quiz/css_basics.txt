@@ -1,0 +1,140 @@
+What does CSS stand for?
+Computer Style System
+Cascading Style Sheet
+Creative Style System
+Computed Style Sheet
+2
+CSS (Cascading Style Sheets) is a language used to describe the presentation of HTML documents.
+Which CSS property is used to change the text color?
+text-color
+font-color
+color
+text-style
+3
+The color property sets the color of text content.
+What is the correct way to select an element with id "header"?
+#header
+.header
+element.header
+*header
+1
+The # symbol is used to select elements by their ID in CSS.
+How do you select all paragraph elements with the class "intro"?
+#intro
+p.intro
+.intro p
+paragraph.intro
+2
+Combining an element selector with a class selector targets specific elements with that class.
+Which property is used to add space between elements?
+spacing
+gap
+margin
+padding
+3
+Margin adds space outside elements, between them and other elements.
+What is the correct order of the CSS box model from outside to inside?
+Margin, Border, Padding, Content
+Border, Margin, Content, Padding
+Padding, Border, Margin, Content
+Content, Padding, Border, Margin
+1
+The box model layers from outside in are: margin, border, padding, and content.
+Which CSS property is used to make text bold?
+font-bold
+text-bold
+bold
+font-weight
+4
+font-weight is used to specify the thickness of text characters.
+How do you make a list display without bullets?
+list-style: none
+list-type: none
+bullet: none
+list-style-type: none
+4
+list-style-type: none removes bullets or numbers from lists.
+What is the correct way to apply a flexbox layout?
+display: flex-box
+display: flexible
+display: flex
+flex: display
+3
+display: flex creates a flex container, enabling flexbox layout for its children.
+Which property is used to create rounded corners?
+round-corners
+corner-radius
+border-round
+border-radius
+4
+border-radius adds rounded corners to elements.
+What is the purpose of the z-index property?
+Controls horizontal position
+Controls vertical position
+Controls stacking order
+Controls element size
+3
+z-index determines the stacking order of positioned elements.
+How do you center an element horizontally?
+margin: center
+margin: 0 auto
+align: center
+position: center
+2
+margin: 0 auto centers block elements horizontally within their container.
+Which property is used to create a grid layout?
+display: grid-layout
+display: grid
+grid: display
+grid-display: true
+2
+display: grid enables CSS Grid Layout for the container.
+What is the purpose of the position: relative property?
+Makes element follow scroll
+Positions relative to viewport
+Positions relative to normal position
+Makes element movable
+3
+position: relative positions an element relative to its normal position.
+How do you make text wrap around an image?
+wrap: image
+float: left
+text-wrap: image
+image-float: left
+2
+float: left makes content flow around the element's left side.
+Which property controls the size of background images?
+background-size
+bg-size
+image-size
+background-scale
+1
+background-size controls how background images are sized within their container.
+What is the purpose of media queries?
+To play media files
+To query databases
+To create responsive designs
+To load external media
+3
+Media queries allow different styles based on device characteristics.
+How do you select every other element?
+:every-other
+:alternate
+:nth-child(2n)
+:even
+3
+:nth-child(2n) selects every other element in a sequence.
+Which property is used to create animations?
+@keyframes
+@animate
+animation
+transform
+1
+@keyframes defines the sequence of steps in a CSS animation.
+What is the purpose of the ::before pseudo-element?
+To style elements before hover
+To insert content before an element
+To prioritize styles
+To add previous styles
+2
+::before creates a pseudo-element before the content of an element.

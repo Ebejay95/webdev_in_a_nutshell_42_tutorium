@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position Demo</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 768px;
+            padding: 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .select-container {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        select {
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            width: 200px;
+        }
+
+        .demo-area {
+            position: relative;
+            background-color: #f3f4f6;
+            padding: 16px;
+            height: 256px;
+            overflow: auto;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+        }
+
+        .parent-container {
+            margin-bottom: 16px;
+            padding: 8px;
+            background-color: #dbeafe;
+            border: 1px solid #e5e7eb;
+        }
+
+        .element-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .normal-element {
+            padding: 8px;
+            background-color: #e5e7eb;
+            border: 1px solid #d1d5db;
+        }
+
+        .positioned-box {
+            padding: 8px;
+            background-color: #4ade80;
+            border: 1px solid #d1d5db;
+            width: 128px;
+        }
+
+        /* Position classes that will be toggled via JavaScript */
+        .relative-pos {
+            position: relative;
+            left: 80px;
+            top: 8px;
+        }
+
+        .absolute-pos {
+            position: absolute;
+            top: 80px;
+            left: 80px;
+        }
+
+        .fixed-pos {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+        }
+
+        .sticky-pos {
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="select-container">
+            <label for="position-select">Select Position:</label>
+            <select id="position-select">
+                <option value="static">Static (Default)</option>
+                <option value="relative">Relative</option>
+                <option value="absolute">Absolute</option>
+                <option value="fixed">Fixed</option>
+                <option value="sticky">Sticky</option>
+            </select>
+        </div>
+
+        <div class="demo-area">
+            <div class="parent-container">Parent Container</div>
+            
+            <div class="element-container">
+                <div class="normal-element">Normal Element</div>
+                
+                <div id="positioned-box" class="positioned-box">
+                    Static positioned box
+                </div>
+                
+                <div class="normal-element">Normal Element</div>
+                <div class="normal-element">Normal Element</div>
+                <div class="normal-element">Normal Element</div>
+                <div class="normal-element">Normal Element</div>
+                <div class="normal-element">Normal Element</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const positionSelect = document.getElementById('position-select');
+        const positionedBox = document.getElementById('positioned-box');
+
+        positionSelect.addEventListener('change', (e) => {
+            // Remove all position classes first
+            positionedBox.classList.remove('relative-pos', 'absolute-pos', 'fixed-pos', 'sticky-pos');
+            
+            // Update the text content
+            positionedBox.textContent = `${e.target.value} positioned box`;
+
+            // Add the appropriate class based on selection
+            switch(e.target.value) {
+                case 'relative':
+                    positionedBox.classList.add('relative-pos');
+                    break;
+                case 'absolute':
+                    positionedBox.classList.add('absolute-pos');
+                    break;
+                case 'fixed':
+                    positionedBox.classList.add('fixed-pos');
+                    break;
+                case 'sticky':
+                    positionedBox.classList.add('sticky-pos');
+                    break;
+                // For 'static', we don't need to add any class
+            }
+        });
+    </script>
+</body>
+</html>

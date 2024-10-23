@@ -1,0 +1,280 @@
+What does REST stand for in the context of web services?
+Responsive State Transfer
+Remote System Transfer
+Representational State Transfer
+Resource State Transform
+3
+REST stands for Representational State Transfer, an architectural style for distributed systems designed by Roy Fielding.
+Which HTTP method should be used to retrieve a resource in a RESTful API?
+POST
+GET
+PUT
+DELETE
+2
+GET is used to retrieve/read resources and should not modify any data on the server.
+What is the primary purpose of the HTTP POST method in REST?
+To update existing resources
+To create new resources
+To delete resources
+To retrieve resources
+2
+POST is primarily used to create new resources on the server, though it can be used for other purposes in non-RESTful contexts.
+Which HTTP status code indicates a successful resource creation in REST?
+200 OK
+201 Created
+204 No Content
+202 Accepted
+2
+201 Created is the proper status code to return when a new resource has been successfully created on the server.
+What does the term 'stateless' mean in REST architecture?
+The server stores all client states
+Each request contains all necessary information
+The client cannot maintain state
+Resources never change state
+2
+In REST, each request from client to server must contain all information needed to understand and process the request, without relying on stored context.
+Which HTTP method is idempotent, meaning multiple identical requests should have the same effect as a single request?
+POST
+PATCH
+PUT
+DELETE
+3
+PUT is idempotent - making the same PUT request multiple times should have the same effect as making it once.
+What is a URI in REST architecture?
+Universal Response Identifier
+Uniform Resource Indicator
+Uniform Resource Identifier
+Universal Resource Implementation
+3
+URI (Uniform Resource Identifier) is used to identify resources in a REST system, often in the form of URLs.
+Which status code should be returned when a requested resource is not found?
+400 Bad Request
+401 Unauthorized
+403 Forbidden
+404 Not Found
+4
+404 Not Found is the appropriate status code when the requested resource doesn't exist on the server.
+What does HATEOAS stand for in REST architecture?
+Hypertext As The Engine Of Application State
+Hypertext Application Transfer Of Active States
+High Availability Text Engine Of Application Services
+Hypertext Active Transfer Engine Of Application State
+1
+HATEOAS is a REST constraint meaning clients interact with the application entirely through hypermedia provided dynamically by servers.
+Which HTTP method should be used to completely update a resource in REST?
+PATCH
+POST
+PUT
+UPDATE
+3
+PUT is used for complete updates of a resource, replacing the entire resource with the new representation.
+What is the purpose of the HTTP PATCH method in REST?
+To create new resources
+To partially modify resources
+To delete resources
+To retrieve resources
+2
+PATCH is used for partial modifications to a resource, unlike PUT which replaces the entire resource.
+Which HTTP status code range indicates server errors?
+200-299
+300-399
+400-499
+500-599
+4
+5xx status codes indicate server-side errors, where the server failed to fulfill a valid request.
+What is the main purpose of caching in REST?
+To reduce server load and improve performance
+To ensure data consistency
+To validate user credentials
+To compress data transmission
+1
+Caching helps improve performance and scalability by storing copies of responses closer to clients.
+How should related resources be represented in a RESTful API?
+Through complex query parameters
+Through hypermedia links
+Through separate API versions
+Through custom HTTP methods
+2
+Related resources should be represented through hypermedia links, following the HATEOAS principle.
+What does the HTTP status code 415 indicate?
+Unsupported Media Type
+Method Not Allowed
+Bad Gateway
+Service Unavailable
+1
+415 Unsupported Media Type indicates the server refuses to accept the request because the payload format is unsupported.
+What is the recommended way to version a RESTful API?
+Using different HTTP methods
+Using query parameters
+Using URL path versioning
+Using custom HTTP headers
+3
+While there are multiple approaches, URL path versioning (e.g., /v1/resources) is commonly used and easily understood.
+Which principle states that REST should use a uniform interface?
+Statelessness
+Layered System
+Client-Server
+Uniform Interface
+4
+The Uniform Interface principle ensures standardization of communication between components.
+What is the purpose of the OPTIONS HTTP method in REST?
+To retrieve resource metadata
+To update resources
+To delete resources
+To create resources
+1
+OPTIONS allows clients to discover which operations are supported for a resource through metadata.
+What should be returned in response to a successful DELETE request?
+200 OK with response body
+204 No Content
+201 Created
+202 Accepted
+2
+A successful DELETE should return 204 No Content, as there is typically no body to return.
+Which HTTP method is considered safe (read-only)?
+POST
+PUT
+GET
+DELETE
+3
+GET is considered safe because it should only retrieve data and not modify server state.
+What is the correct way to link an external CSS file in HTML?
+<style src="styles.css">
+<link rel="stylesheet" href="styles.css">
+<css href="styles.css">
+<stylesheet src="styles.css">
+2
+The <link> element with rel="stylesheet" is used to link external CSS files.
+How do you properly include an external JavaScript file?
+<script href="script.js">
+<javascript src="script.js">
+<script src="script.js">
+<js file="script.js">
+3
+The <script> tag with the src attribute is used to include external JavaScript files.
+Which meta tag defines the character encoding for the HTML document?
+<meta charset="UTF-8">
+<meta encoding="UTF-8">
+<charset type="UTF-8">
+<encoding value="UTF-8">
+1
+The meta charset tag specifies the character encoding for the HTML document, typically UTF-8.
+What is the correct way to specify the viewport settings for mobile devices?
+<viewport content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta viewport="width=device-width">
+<mobile content="width=device-width">
+2
+The viewport meta tag helps control layout on mobile browsers.
+Which tag is used to define the title of the document in the browser tab?
+<header>
+<name>
+<title>
+<head>
+3
+The <title> tag defines the title shown in the browser's title bar or tab.
+How do you specify the base URL for all relative URLs in a page?
+<url base="https://example.com">
+<root href="https://example.com">
+<base href="https://example.com">
+<baseurl value="https://example.com">
+3
+The <base> tag specifies the base URL for all relative URLs in the document.
+What is the correct way to include a favicon?
+<favicon href="favicon.ico">
+<link rel="icon" href="favicon.ico">
+<icon src="favicon.ico">
+<img rel="icon" src="favicon.ico">
+2
+The <link> element with rel="icon" is used to specify a favicon for the website.
+How do you specify the description of your web page for search engines?
+<meta name="description" content="Page description">
+<description content="Page description">
+<meta description="Page description">
+<search content="Page description">
+1
+The meta description tag provides a summary of the page content for search engines.
+Which tag is used to prevent search engines from indexing a page?
+<meta name="robots" content="noindex">
+<search index="false">
+<meta index="none">
+<robots content="none">
+1
+The robots meta tag with noindex value tells search engines not to index the page.
+What's the correct way to specify the author of a web page?
+<author name="John Doe">
+<meta name="author" content="John Doe">
+<meta author="John Doe">
+<creator content="John Doe">
+2
+The meta author tag specifies the author of the web page.
+How do you include a preloaded font file?
+<font preload="font.woff2">
+<preload src="font.woff2" as="font">
+<link rel="preload" href="font.woff2" as="font" type="font/woff2" crossorigin>
+<resource type="font" src="font.woff2">
+3
+Preloading fonts can improve performance by loading critical resources earlier.
+What's the correct way to specify the language of your web page?
+<meta lang="en">
+<language type="en">
+<html lang="en">
+<meta name="language" content="en">
+3
+The lang attribute in the html tag specifies the primary language of the document.
+How do you include a custom web font using Google Fonts?
+<font src="google-fonts-url">
+<link href="google-fonts-url" rel="stylesheet">
+<style src="google-fonts-url">
+<google-font href="font-name">
+2
+Google Fonts are included using a <link> element with the provided stylesheet URL.
+Which attribute is required when loading external fonts or scripts from different domains?
+external
+cross-domain
+crossorigin
+cors
+3
+The crossorigin attribute is needed for loading resources from different domains.
+What's the proper way to include an alternative stylesheet?
+<link rel="alternate stylesheet" href="dark.css" title="Dark Theme">
+<style alternate="dark.css">
+<stylesheet alternate="dark.css">
+<css alternate="true" src="dark.css">
+1
+Alternative stylesheets can be included using the rel="alternate stylesheet" attribute.
+How do you specify a default CSS style for printing?
+<style media="print">
+<link rel="stylesheet" href="print.css" media="print">
+<css type="print" href="print.css">
+<print-style src="print.css">
+2
+Print stylesheets are specified using the media="print" attribute.
+What's the correct way to include jQuery from a CDN?
+<script src="https://code.jquery.com/jquery-3.6.0.min.js">
+<jquery src="cdn-url">
+<library name="jquery" src="cdn-url">
+<include src="jquery-cdn">
+1
+External JavaScript libraries like jQuery are included using the standard script tag.
+How do you specify the default address for your website's RSS feed?
+<feed href="rss.xml">
+<rss href="feed.xml">
+<link rel="alternate" type="application/rss+xml" href="feed.xml">
+<meta name="feed" content="feed.xml">
+3
+RSS feeds are specified using a link element with the appropriate type attribute.
+Which meta tag helps prevent content sniffing attacks?
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta security="no-sniff">
+<meta protect="content-sniffing">
+<security content="nosniff">
+1
+The X-Content-Type-Options meta tag helps prevent MIME type sniffing.
+How do you specify a canonical URL for your page?
+<url canonical="example.com">
+<canonical href="example.com">
+<link rel="canonical" href="https://example.com/page">
+<meta name="canonical" content="example.com">
+3
+The canonical link element tells search engines which URL is the primary version of a page.

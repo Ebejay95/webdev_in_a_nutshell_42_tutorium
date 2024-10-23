@@ -1,0 +1,140 @@
+What does REST stand for in the context of web services?
+Responsive State Transfer
+Remote System Transfer
+Representational State Transfer
+Resource State Transform
+3
+REST stands for Representational State Transfer, an architectural style for distributed systems designed by Roy Fielding.
+Which HTTP method should be used to retrieve a resource in a RESTful API?
+POST
+GET
+PUT
+DELETE
+2
+GET is used to retrieve/read resources and should not modify any data on the server.
+What is the primary purpose of the HTTP POST method in REST?
+To update existing resources
+To create new resources
+To delete resources
+To retrieve resources
+2
+POST is primarily used to create new resources on the server, though it can be used for other purposes in non-RESTful contexts.
+Which HTTP status code indicates a successful resource creation in REST?
+200 OK
+201 Created
+204 No Content
+202 Accepted
+2
+201 Created is the proper status code to return when a new resource has been successfully created on the server.
+What does the term 'stateless' mean in REST architecture?
+The server stores all client states
+Each request contains all necessary information
+The client cannot maintain state
+Resources never change state
+2
+In REST, each request from client to server must contain all information needed to understand and process the request, without relying on stored context.
+Which HTTP method is idempotent, meaning multiple identical requests should have the same effect as a single request?
+POST
+PATCH
+PUT
+DELETE
+3
+PUT is idempotent - making the same PUT request multiple times should have the same effect as making it once.
+What is a URI in REST architecture?
+Universal Response Identifier
+Uniform Resource Indicator
+Uniform Resource Identifier
+Universal Resource Implementation
+3
+URI (Uniform Resource Identifier) is used to identify resources in a REST system, often in the form of URLs.
+Which status code should be returned when a requested resource is not found?
+400 Bad Request
+401 Unauthorized
+403 Forbidden
+404 Not Found
+4
+404 Not Found is the appropriate status code when the requested resource doesn't exist on the server.
+What does HATEOAS stand for in REST architecture?
+Hypertext As The Engine Of Application State
+Hypertext Application Transfer Of Active States
+High Availability Text Engine Of Application Services
+Hypertext Active Transfer Engine Of Application State
+1
+HATEOAS is a REST constraint meaning clients interact with the application entirely through hypermedia provided dynamically by servers.
+Which HTTP method should be used to completely update a resource in REST?
+PATCH
+POST
+PUT
+UPDATE
+3
+PUT is used for complete updates of a resource, replacing the entire resource with the new representation.
+What is the purpose of the HTTP PATCH method in REST?
+To create new resources
+To partially modify resources
+To delete resources
+To retrieve resources
+2
+PATCH is used for partial modifications to a resource, unlike PUT which replaces the entire resource.
+Which HTTP status code range indicates server errors?
+200-299
+300-399
+400-499
+500-599
+4
+5xx status codes indicate server-side errors, where the server failed to fulfill a valid request.
+What is the main purpose of caching in REST?
+To reduce server load and improve performance
+To ensure data consistency
+To validate user credentials
+To compress data transmission
+1
+Caching helps improve performance and scalability by storing copies of responses closer to clients.
+How should related resources be represented in a RESTful API?
+Through complex query parameters
+Through hypermedia links
+Through separate API versions
+Through custom HTTP methods
+2
+Related resources should be represented through hypermedia links, following the HATEOAS principle.
+What does the HTTP status code 415 indicate?
+Unsupported Media Type
+Method Not Allowed
+Bad Gateway
+Service Unavailable
+1
+415 Unsupported Media Type indicates the server refuses to accept the request because the payload format is unsupported.
+What is the recommended way to version a RESTful API?
+Using different HTTP methods
+Using query parameters
+Using URL path versioning
+Using custom HTTP headers
+3
+While there are multiple approaches, URL path versioning (e.g., /v1/resources) is commonly used and easily understood.
+Which principle states that REST should use a uniform interface?
+Statelessness
+Layered System
+Client-Server
+Uniform Interface
+4
+The Uniform Interface principle ensures standardization of communication between components.
+What is the purpose of the OPTIONS HTTP method in REST?
+To retrieve resource metadata
+To update resources
+To delete resources
+To create resources
+1
+OPTIONS allows clients to discover which operations are supported for a resource through metadata.
+What should be returned in response to a successful DELETE request?
+200 OK with response body
+204 No Content
+201 Created
+202 Accepted
+2
+A successful DELETE should return 204 No Content, as there is typically no body to return.
+Which HTTP method is considered safe (read-only)?
+POST
+PUT
+GET
+DELETE
+3
+GET is considered safe because it should only retrieve data and not modify server state.

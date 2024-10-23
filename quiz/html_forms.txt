@@ -1,0 +1,70 @@
+What is the purpose of the FormData object in JavaScript?
+To validate form data
+To create new forms
+To easily construct form data for submission
+To store form templates
+3
+FormData provides an easy way to construct a set of key/value pairs representing form fields and values.
+Which HTTP status code indicates successful form validation but pending processing?
+200 OK
+201 Created
+202 Accepted
+204 No Content
+3
+202 Accepted indicates the request was valid but processing is still pending.
+How do you prevent automated form submissions?
+Using CAPTCHA
+Using hidden fields
+Using JavaScript validation
+All of the above
+4
+Multiple techniques including CAPTCHA, honeypots, and validation help prevent automated submissions.
+What's the purpose of the form's autocomplete attribute?
+To automatically submit forms
+To enable browser autofill
+To auto-validate fields
+To auto-format input
+2
+The autocomplete attribute controls whether browsers should offer to save and autofill form data.
+How do you handle cross-origin form submissions?
+Using CORS headers
+Using JSONP
+Using a proxy
+Both A and C are correct
+4
+Cross-origin form submissions can be handled with CORS headers or through a proxy.
+Which attribute helps prevent Cross-Site Request Forgery (CSRF)?
+<form secure>
+<form token>
+<input type="hidden" name="_token">
+<form csrf>
+3
+CSRF tokens in hidden fields help verify that form submissions come from your site.
+How do you create a form that updates resources using the PATCH method?
+<form method="PATCH">
+Using _method hidden field
+Using X-HTTP-Method-Override header
+Both B and C are correct
+4
+Since HTML forms don't support PATCH, it's implemented using hidden fields or headers.
+What's the best practice for handling form validation errors?
+Alert messages
+Inline error messages
+Server-side redirects
+Client-side only
+2
+Inline error messages provide the best user experience for form validation feedback.
+How do you implement real-time form validation?
+Using input event listeners
+Using submit event listeners
+Using focus event listeners
+Using load event listeners
+1
+Input event listeners allow validation as the user types or changes values.
+Which HTTP header indicates the type of response expected from the server?
+Accept
+Content-Type
+Response-Type
+Expect
+1
+The Accept header tells the server what type of response the client expects.

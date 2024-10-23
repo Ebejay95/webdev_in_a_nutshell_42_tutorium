@@ -1,0 +1,56 @@
+Which part of a URL indicates the resource's location on the server?
+Protocol
+Path
+Query String
+Fragment
+2
+The path specifies the exact location of a resource on the server.
+What symbol is used to separate the query string in a URL?
+?
+#
+:
+&
+1
+The question mark (?) is used to start the query string in a URL.
+Which part of the URL is used to specify the communication protocol?
+Path
+Host
+Port
+Protocol
+4
+The protocol (e.g., 'http://' or 'https://') specifies how the client should communicate with the server.
+What part of the URL typically comes after the domain name?
+Path
+Protocol
+Fragment
+Query String
+1
+After the domain name, the path indicates the specific resource location on the server.
+Which part of a URL is optional and usually used to jump to a specific section of a webpage?
+Path
+Fragment
+Host
+Port
+2
+The fragment (identified by #) is used to jump to specific sections within a webpage.
+In the URL 'https://example.com/test/?session=hi34h234biubob24', what is '/test/' called?
+Protocol
+Host
+Path
+Query String
+3
+'/test/' is the path component of the URL, indicating the resource location.
+In the URL 'https://example.com/test/?session=hi34h234biubob24', what does '?session=hi34h234biubob24' represent?
+Host
+Path
+Fragment
+Query String
+4
+This is the query string, used to pass parameters to the server.
+In the URL 'https://example.com/test/?session=hi34h234biubob24', what is 'https'?
+Path
+Protocol
+Fragment
+Host
+2
+HTTPS is the protocol, indicating secure communication over HTTP.
