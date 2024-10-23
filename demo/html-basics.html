@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Elements Showcase</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .controls {
+            background-color: #f3f4f6;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .element-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .element-button {
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .element-button:hover {
+            background-color: #e5e7eb;
+        }
+
+        .preview-area {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            min-height: 400px;
+        }
+
+        .element-wrapper {
+            position: relative;
+            margin: 8px 0;
+            padding: 8px;
+            border: 1px solid transparent;
+        }
+
+        .element-wrapper:hover {
+            border: 1px dashed #e5e7eb;
+        }
+
+        .element-controls {
+            display: none;
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: white;
+            padding: 4px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .element-wrapper:hover .element-controls {
+            display: flex;
+            gap: 4px;
+        }
+
+        .control-button {
+            padding: 4px 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            background-color: white;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .control-button:hover {
+            background-color: #f3f4f6;
+        }
+
+        .element-tag {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #1f2937;
+            color: white;
+            padding: 2px 4px;
+            border-radius: 0 0 4px 0;
+            font-size: 10px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .element-wrapper:hover .element-tag {
+            opacity: 1;
+        }
+
+        .code-display {
+            padding: 16px;
+            background-color: #1f2937;
+            color: #e5e7eb;
+            border-radius: 8px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        /* Basic styling for preview elements */
+        .preview-area h1 { font-size: 2.5em; margin: 0.67em 0; }
+        .preview-area h2 { font-size: 2em; margin: 0.83em 0; }
+        .preview-area h3 { font-size: 1.5em; margin: 1em 0; }
+        .preview-area h4 { font-size: 1.25em; margin: 1.33em 0; }
+        .preview-area h5 { font-size: 1.1em; margin: 1.67em 0; }
+        .preview-area h6 { font-size: 1em; margin: 2.33em 0; }
+        .preview-area p { margin: 1em 0; }
+        .preview-area blockquote { margin: 1em 40px; border-left: 4px solid #e5e7eb; padding-left: 16px; }
+        .preview-area pre { background-color: #f3f4f6; padding: 16px; border-radius: 4px; }
+        .preview-area code { background-color: #f3f4f6; padding: 2px 4px; border-radius: 4px; }
+        .preview-area ul, .preview-area ol { margin: 1em 0; padding-left: 40px; }
+        .preview-area table { border-collapse: collapse; width: 100%; }
+        .preview-area th, .preview-area td { border: 1px solid #e5e7eb; padding: 8px; text-align: left; }
+        .preview-area th { background-color: #f3f4f6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <h3>Add Elements:</h3>
+            <div class="element-selector" id="element-selector">
+                <!-- Buttons will be added by JavaScript -->
+            </div>
+        </div>
+
+        <div class="preview-area" id="preview-area">
+            <!-- Elements will be added here -->
+        </div>
+
+        <div class="code-display" id="code-display">
+            <!-- HTML code will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        const elements = {
+            'h1': { label: 'Heading 1', content: 'Heading 1' },
+            'h2': { label: 'Heading 2', content: 'Heading 2' },
+            'h3': { label: 'Heading 3', content: 'Heading 3' },
+            'h4': { label: 'Heading 4', content: 'Heading 4' },
+            'h5': { label: 'Heading 5', content: 'Heading 5' },
+            'h6': { label: 'Heading 6', content: 'Heading 6' },
+            'p': { label: 'Paragraph', content: 'This is a paragraph of text. It demonstrates how text flows within a paragraph element.' },
+            'blockquote': { label: 'Blockquote', content: 'This is a blockquote. It\'s commonly used for citations or quoted text.' },
+            'pre': { label: 'Preformatted', content: 'This is preformatted text.\nIt preserves both spaces and line breaks.' },
+            'code': { label: 'Code', content: 'const example = "This is code";' },
+            'ul': { 
+                label: 'Unordered List',
+                content: '<li>First item</li><li>Second item</li><li>Third item</li>'
+            },
+            'ol': {
+                label: 'Ordered List',
+                content: '<li>First item</li><li>Second item</li><li>Third item</li>'
+            },
+            'table': {
+                label: 'Table',
+                content: '<tr><th>Header 1</th><th>Header 2</th></tr><tr><td>Cell 1</td><td>Cell 2</td></tr>'
+            },
+            'hr': { label: 'Horizontal Rule', content: '' },
+            'em': { label: 'Emphasis', content: 'Emphasized text' },
+            'strong': { label: 'Strong', content: 'Strong text' },
+            'mark': { label: 'Mark', content: 'Marked text' },
+            'small': { label: 'Small', content: 'Small text' },
+            'sub': { label: 'Subscript', content: 'Subscript text' },
+            'sup': { label: 'Superscript', content: 'Superscript text' }
+        };
+
+        const elementSelector = document.getElementById('element-selector');
+        const previewArea = document.getElementById('preview-area');
+        const codeDisplay = document.getElementById('code-display');
+
+        // Create element buttons
+        Object.entries(elements).forEach(([tag, info]) => {
+            const button = document.createElement('button');
+            button.className = 'element-button';
+            button.textContent = info.label;
+            button.onclick = () => addElement(tag);
+            elementSelector.appendChild(button);
+        });
+
+        function addElement(tag) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'element-wrapper';
+            
+            const element = document.createElement(tag);
+            element.innerHTML = elements[tag].content;
+            
+            const tagLabel = document.createElement('div');
+            tagLabel.className = 'element-tag';
+            tagLabel.textContent = tag;
+            
+            const controls = document.createElement('div');
+            controls.className = 'element-controls';
+            
+            const moveUpButton = document.createElement('button');
+            moveUpButton.className = 'control-button';
+            moveUpButton.textContent = '↑';
+            moveUpButton.onclick = () => moveElement(wrapper, 'up');
+            
+            const moveDownButton = document.createElement('button');
+            moveDownButton.className = 'control-button';
+            moveDownButton.textContent = '↓';
+            moveDownButton.onclick = () => moveElement(wrapper, 'down');
+            
+            const removeButton = document.createElement('button');
+            removeButton.className = 'control-button';
+            removeButton.textContent = '×';
+            removeButton.onclick = () => wrapper.remove();
+            
+            controls.append(moveUpButton, moveDownButton, removeButton);
+            wrapper.append(tagLabel, element, controls);
+            previewArea.appendChild(wrapper);
+            
+            updateCodeDisplay();
+        }
+
+        function moveElement(element, direction) {
+            if (direction === 'up' && element.previousElementSibling) {
+                element.parentNode.insertBefore(element, element.previousElementSibling);
+            } else if (direction === 'down' && element.nextElementSibling) {
+                element.parentNode.insertBefore(element.nextElementSibling, element);
+            }
+            updateCodeDisplay();
+        }
+
+        function updateCodeDisplay() {
+            let html = '';
+            previewArea.querySelectorAll('.element-wrapper').forEach(wrapper => {
+                const element = wrapper.querySelector(':not(.element-tag):not(.element-controls)');
+                html += element.outerHTML + '\n';
+            });
+            codeDisplay.textContent = html;
+        }
+
+        // Add some initial elements
+        addElement('h1');
+        addElement('p');
+    </script>
+</body>
+</html>

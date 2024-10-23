@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid Demo</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1024px;
+            padding: 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .control-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        select {
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .demo-area {
+            background-color: #f3f4f6;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            min-height: 400px;
+        }
+
+        .grid-container {
+            display: grid;
+            gap: 8px;
+            padding: 16px;
+            background-color: white;
+            border-radius: 4px;
+            min-height: 300px;
+        }
+
+        .grid-item {
+            background-color: #4ade80;
+            border: 1px solid #22c55e;
+            border-radius: 4px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            color: #052e16;
+        }
+
+        .code-display {
+            margin-top: 16px;
+            padding: 16px;
+            background-color: #1f2937;
+            color: #e5e7eb;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .explanation {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <div class="control-group">
+                <label for="columns-select">Grid Template Columns:</label>
+                <select id="columns-select">
+                    <option value="1fr 1fr 1fr">Three equal columns (1fr 1fr 1fr)</option>
+                    <option value="2fr 1fr 1fr">Left column wider (2fr 1fr 1fr)</option>
+                    <option value="auto 1fr 1fr">First auto, others equal (auto 1fr 1fr)</option>
+                    <option value="repeat(4, 1fr)">Four equal columns</option>
+                    <option value="minmax(100px, 1fr) 2fr 1fr">Responsive columns</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="rows-select">Grid Template Rows:</label>
+                <select id="rows-select">
+                    <option value="auto">Auto rows</option>
+                    <option value="100px 100px 100px">Fixed height rows (100px)</option>
+                    <option value="1fr 2fr 1fr">Proportional rows</option>
+                    <option value="minmax(50px, auto)">Minimum 50px rows</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="justify-items-select">Justify Items:</label>
+                <select id="justify-items-select">
+                    <option value="stretch">Stretch</option>
+                    <option value="start">Start</option>
+                    <option value="center">Center</option>
+                    <option value="end">End</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="align-items-select">Align Items:</label>
+                <select id="align-items-select">
+                    <option value="stretch">Stretch</option>
+                    <option value="start">Start</option>
+                    <option value="center">Center</option>
+                    <option value="end">End</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="gap-select">Grid Gap:</label>
+                <select id="gap-select">
+                    <option value="8px">Small (8px)</option>
+                    <option value="16px">Medium (16px)</option>
+                    <option value="24px">Large (24px)</option>
+                    <option value="32px">Extra Large (32px)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="items-count">Number of Items:</label>
+                <select id="items-count">
+                    <option value="6">6 Items</option>
+                    <option value="9">9 Items</option>
+                    <option value="12">12 Items</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="demo-area">
+            <div id="grid-container" class="grid-container">
+                <!-- Grid items will be generated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="code-display" id="code-display"></div>
+
+        <div class="explanation">
+            <strong>Grid Properties Explained:</strong><br>
+            • grid-template-columns: Defines the columns structure<br>
+            • grid-template-rows: Defines the rows structure<br>
+            • justify-items: Aligns items horizontally within their grid cells<br>
+            • align-items: Aligns items vertically within their grid cells<br>
+            • gap: Sets the spacing between grid items
+        </div>
+    </div>
+
+    <script>
+        const gridContainer = document.getElementById('grid-container');
+        const codeDisplay = document.getElementById('code-display');
+        
+        // Get all select elements
+        const columnsSelect = document.getElementById('columns-select');
+        const rowsSelect = document.getElementById('rows-select');
+        const justifyItemsSelect = document.getElementById('justify-items-select');
+        const alignItemsSelect = document.getElementById('align-items-select');
+        const gapSelect = document.getElementById('gap-select');
+        const itemsCountSelect = document.getElementById('items-count');
+
+        function generateGridItems(count) {
+            gridContainer.innerHTML = '';
+            for (let i = 1; i <= count; i++) {
+                const item = document.createElement('div');
+                item.className = 'grid-item';
+                item.textContent = `Item ${i}`;
+                gridContainer.appendChild(item);
+            }
+        }
+
+        function updateGrid() {
+            const columns = columnsSelect.value;
+            const rows = rowsSelect.value;
+            const justifyItems = justifyItemsSelect.value;
+            const alignItems = alignItemsSelect.value;
+            const gap = gapSelect.value;
+            const itemsCount = parseInt(itemsCountSelect.value);
+
+            // Update grid container styles
+            gridContainer.style.gridTemplateColumns = columns;
+            gridContainer.style.gridTemplateRows = rows;
+            gridContainer.style.justifyItems = justifyItems;
+            gridContainer.style.alignItems = alignItems;
+            gridContainer.style.gap = gap;
+
+            // Generate grid items
+            generateGridItems(itemsCount);
+
+            // Update code display
+            const cssCode = `.grid-container {
+    display: grid;
+    grid-template-columns: ${columns};
+    grid-template-rows: ${rows};
+    justify-items: ${justifyItems};
+    align-items: ${alignItems};
+    gap: ${gap};
+}`;
+            codeDisplay.textContent = cssCode;
+        }
+
+        // Add event listeners to all controls
+        columnsSelect.addEventListener('change', updateGrid);
+        rowsSelect.addEventListener('change', updateGrid);
+        justifyItemsSelect.addEventListener('change', updateGrid);
+        alignItemsSelect.addEventListener('change', updateGrid);
+        gapSelect.addEventListener('change', updateGrid);
+        itemsCountSelect.addEventListener('change', updateGrid);
+
+        // Initialize grid
+        updateGrid();
+    </script>
+</body>
+</html>

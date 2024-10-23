@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Pseudo-elements Demo</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+            background-color: #f3f4f6;
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .control-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        select, input {
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .demo-area {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .example-box {
+            padding: 20px;
+            background-color: #f3f4f6;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .code-display {
+            margin-top: 16px;
+            padding: 16px;
+            background-color: #1f2937;
+            color: #e5e7eb;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .explanation {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Example styles that will be dynamically updated */
+        #dynamic-styles {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <div class="control-group">
+                <label>Select Pseudo-element Demo:</label>
+                <select id="demo-selector">
+                    <option value="before-after">::before and ::after</option>
+                    <option value="first-letter">::first-letter</option>
+                    <option value="first-line">::first-line</option>
+                    <option value="selection">::selection</option>
+                    <option value="placeholder">::placeholder</option>
+                    <option value="marker">::marker</option>
+                </select>
+            </div>
+
+            <div id="custom-controls"></div>
+        </div>
+
+        <div class="demo-area" id="demo-area">
+            <!-- Examples will be generated here -->
+        </div>
+
+        <div class="code-display" id="code-display"></div>
+
+        <div class="explanation" id="explanation"></div>
+    </div>
+
+    <script>
+        const demos = {
+            'before-after': {
+                title: '::before and ::after Pseudo-elements',
+                controls: [
+                    {
+                        type: 'text',
+                        label: 'Before Content',
+                        id: 'before-content',
+                        value: '🌟 '
+                    },
+                    {
+                        type: 'text',
+                        label: 'After Content',
+                        id: 'after-content',
+                        value: ' ✨'
+                    },
+                    {
+                        type: 'color',
+                        label: 'Pseudo-element Color',
+                        id: 'pseudo-color',
+                        value: '#4ade80'
+                    }
+                ],
+                generateHTML: () => `
+                    <div class="example-box">
+                        <p id="before-after-demo">Hover over me!</p>
+                    </div>
+                `,
+                generateCSS: (values) => `
+#before-after-demo {
+    position: relative;
+    padding: 10px;
+    transition: all 0.3s;
+}
+
+#before-after-demo::before {
+    content: "${values['before-content']}";
+    background-color: ${values['pseudo-color']};
+    transition: all 0.3s;
+}
+
+#before-after-demo::after {
+    content: "${values['after-content']}";
+    background-color: ${values['pseudo-color']};
+    transition: all 0.3s;
+}
+
+#before-after-demo:hover::before {
+    margin-right: 10px;
+}
+
+#before-after-demo:hover::after {
+    margin-left: 10px;
+}`,
+                explanation: '::before and ::after pseudo-elements add content before and after an element\'s content. They\'re often used for decorative elements, icons, or additional content.'
+            },
+            'first-letter': {
+                title: '::first-letter Pseudo-element',
+                controls: [
+                    {
+                        type: 'number',
+                        label: 'Font Size (em)',
+                        id: 'letter-size',
+                        value: '3'
+                    },
+                    {
+                        type: 'color',
+                        label: 'Letter Color',
+                        id: 'letter-color',
+                        value: '#4ade80'
+                    }
+                ],
+                generateHTML: () => `
+                    <div class="example-box">
+                        <p id="first-letter-demo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                `,
+                generateCSS: (values) => `
+#first-letter-demo::first-letter {
+    font-size: ${values['letter-size']}em;
+    color: ${values['letter-color']};
+    float: left;
+    margin-right: 8px;
+    line-height: 1;
+}`,
+                explanation: '::first-letter targets the first letter of a block-level element. It\'s commonly used for drop caps in typography.'
+            },
+            'first-line': {
+                title: '::first-line Pseudo-element',
+                controls: [
+                    {
+                        type: 'color',
+                        label: 'Line Color',
+                        id: 'line-color',
+                        value: '#4ade80'
+                    },
+                    {
+                        type: 'select',
+                        label: 'Font Style',
+                        id: 'line-style',
+                        options: ['normal', 'italic', 'oblique'],
+                        value: 'italic'
+                    }
+                ],
+                generateHTML: () => `
+                    <div class="example-box">
+                        <p id="first-line-demo">First line will be styled differently.
+                        This is the second line of text which will appear normal.
+                        Try resizing the window to see how it adapts.</p>
+                    </div>
+                `,
+                generateCSS: (values) => `
+#first-line-demo::first-line {
+    color: ${values['line-color']};
+    font-style: ${values['line-style']};
+    font-weight: bold;
+}`,
+                explanation: '::first-line targets the first line of a block-level element. The "first line" is dynamic and changes based on the element\'s width.'
+            },
+            'selection': {
+                title: '::selection Pseudo-element',
+                controls: [
+                    {
+                        type: 'color',
+                        label: 'Selection Background',
+                        id: 'selection-bg',
+                        value: '#4ade80'
+                    },
+                    {
+                        type: 'color',
+                        label: 'Selection Text Color',
+                        id: 'selection-color',
+                        value: '#ffffff'
+                    }
+                ],
+                generateHTML: () => `
+                    <div class="example-box">
+                        <p id="selection-demo">Try selecting this text to see the custom selection styling!</p>
+                    </div>
+                `,
+                generateCSS: (values) => `
+#selection-demo::selection {
+    background-color: ${values['selection-bg']};
+    color: ${values['selection-color']};
+}`,
+                explanation: '::selection styles selected text. It\'s used to customize the appearance of text when users select it.'
+            },
+            'placeholder': {
+                title: '::placeholder Pseudo-element',
+                controls: [
+                    {
+                        type: 'color',
+                        label: 'Placeholder Color',
+                        id: 'placeholder-color',
+                        value: '#4ade80'
+                    },
+                    {
+                        type: 'select',
+                        label: 'Font Style',
+                        id: 'placeholder-style',
+                        options: ['normal', 'italic', 'oblique'],
+                        value: 'italic'
+                    }
+                ],
+                generateHTML: () => `
+                    <div class="example-box">
+                        <input type="text" id="placeholder-demo" placeholder="Type something...">
+                    </div>
+                `,
+                generateCSS: (values) => `
+#placeholder-demo::placeholder {
+    color: ${values['placeholder-color']};
+    font-style: ${values['placeholder-style']};
+}`,
+                explanation: '::placeholder targets placeholder text in form elements. It\'s used to style the placeholder text in input fields and textareas.'
+            },
+            'marker': {
+                title: '::marker Pseudo-element',
+                controls: [
+                    {
+                        type: 'color',
+                        label: 'Marker Color',
+                        id: 'marker-color',
+                        value: '#4ade80'
+                    },
+                    {
+                        type: 'text',
+                        label: 'Marker Content',
+                        id: 'marker-content',
+                        value: '→'
+                    }
+                ],
+                generateHTML: () => `
+                    <div class="example-box">
+                        <ul id="marker-demo">
+                            <li>First item</li>
+                            <li>Second item</li>
+                            <li>Third item</li>
+                        </ul>
+                    </div>
+                `,
+                generateCSS: (values) => `
+#marker-demo li::marker {
+    color: ${values['marker-color']};
+    content: "${values['marker-content']} ";
+}`,
+                explanation: '::marker styles the marker box of a list item (usually the bullet point or number). It can be used to customize list markers.'
+            }
+        };
+
+        const demoSelector = document.getElementById('demo-selector');
+        const customControls = document.getElementById('custom-controls');
+        const demoArea = document.getElementById('demo-area');
+        const codeDisplay = document.getElementById('code-display');
+        const explanation = document.getElementById('explanation');
+
+        function createControl(control) {
+            const group = document.createElement('div');
+            group.className = 'control-group';
+
+            const label = document.createElement('label');
+            label.textContent = control.label;
+            group.appendChild(label);
+
+            let input;
+            if (control.type === 'select') {
+                input = document.createElement('select');
+                control.options.forEach(option => {
+                    const opt = document.createElement('option');
+                    opt.value = option;
+                    opt.textContent = option;
+                    input.appendChild(opt);
+                });
+            } else {
+                input = document.createElement('input');
+                input.type = control.type;
+            }
+            input.id = control.id;
+            input.value = control.value;
+            input.addEventListener('input', updateDemo);
+            group.appendChild(input);
+
+            return group;
+        }
+
+        function updateDemo() {
+            const currentDemo = demos[demoSelector.value];
+            const values = {};
+            
+            currentDemo.controls.forEach(control => {
+                values[control.id] = document.getElementById(control.id).value;
+            });
+
+            demoArea.innerHTML = currentDemo.generateHTML();
+            const css = currentDemo.generateCSS(values);
+            codeDisplay.textContent = css;
+            explanation.textContent = currentDemo.explanation;
+
+            // Update dynamic styles
+            let styleElement = document.getElementById('dynamic-styles');
+            if (!styleElement) {
+                styleElement = document.createElement('style');
+                styleElement.id = 'dynamic-styles';
+                document.head.appendChild(styleElement);
+            }
+            styleElement.textContent = css;
+        }
+
+        demoSelector.addEventListener('change', () => {
+            const currentDemo = demos[demoSelector.value];
+            
+            // Update controls
+            customControls.innerHTML = '';
+            currentDemo.controls.forEach(control => {
+                customControls.appendChild(createControl(control));
+            });
+
+            updateDemo();
+        });
+
+        // Initialize with first demo
+        demoSelector.dispatchEvent(new Event('change'));
+    </script>
+</body>
+</html>

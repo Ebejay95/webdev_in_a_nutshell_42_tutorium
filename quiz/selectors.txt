@@ -1,0 +1,105 @@
+Which selector matches elements containing specific text?
+:contains("text")
+:has-text("text")
+:text("text")
+No direct CSS selector for this
+4
+CSS doesn't have a direct selector for matching text content; this requires JavaScript.
+How do you select elements based on their index formula 3n+1?
+:nth-child(3n+1)
+:formula(3n+1)
+:index(3n+1)
+:eq(3n+1)
+1
+:nth-child() accepts formulas to select elements based on patterns.
+Which selector matches form elements in an invalid state?
+:error
+:wrong
+:invalid
+:incorrect
+3
+:invalid matches form elements whose contents fail validity constraints.
+How do you select elements that have no children except text nodes?
+:text-only
+:only-text
+:empty-except-text
+No direct CSS selector for this
+4
+CSS doesn't have a direct selector for elements containing only text.
+What selector matches elements that are being dragged?
+:drag
+:dragging
+:dragged
+:active:drag
+2
+:dragging matches elements while they are being dragged.
+How do you select every element that is the second of its type?
+:nth-of-type(2)
+:second-of-type
+:eq(2)
+:index(2)
+1
+:nth-of-type(n) matches elements based on their position among siblings of the same type.
+Which selector matches all elements that have a specific sibling?
+:has(+ element)
+:with(element)
+:sibling(element)
+No direct CSS selector for this
+4
+Current CSS doesn't support looking ahead for siblings (though :has is coming).
+How do you select elements whose value is in a specific range?
+:in-range
+:range()
+:value-range()
+:between()
+1
+:in-range matches input elements whose values are within specified range limits.
+Which selector targets placeholder text in input fields?
+:placeholder
+::placeholder
+:placeholder-text
+:input-placeholder
+2
+::placeholder matches the placeholder text in form elements.
+How do you select elements with at least one child?
+:parent
+:has-child
+:not(:empty)
+:children
+3
+:not(:empty) matches elements that have at least one child element or text node.
+What selector matches elements currently playing animation?
+:animating
+:playing
+:animation-play-state
+:running
+1
+:animating matches elements currently running a CSS animation.
+How do you select odd-numbered elements of a specific class?
+.class:odd
+.class:nth-child(odd)
+.class:nth-of-type(odd)
+Both B and C are correct
+4
+Both nth-child(odd) and nth-of-type(odd) can select odd-numbered elements.
+Which selector matches elements that are targets of the current URL?
+:target
+:current
+:selected
+:active-url
+1
+:target matches the element whose ID matches the URL's fragment.
+How do you select elements that have no other elements before them?
+:first
+:start
+:no-previous
+:first-of-any
+2
+:start matches elements that have no previous siblings.
+What selector matches optional form elements?
+:not(:required)
+:optional
+:not-required
+:maybe
+2
+:optional matches form elements that don't have the required attribute.

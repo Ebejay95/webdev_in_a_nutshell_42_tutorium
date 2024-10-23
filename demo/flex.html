@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Flexbox Demo</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1024px;
+            padding: 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .control-section {
+            background-color: #f3f4f6;
+            padding: 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .control-section h3 {
+            margin: 0 0 12px 0;
+            font-size: 16px;
+        }
+
+        .control-group {
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        select, input[type="number"] {
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .demo-area {
+            background-color: #f3f4f6;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            min-height: 400px;
+            resize: both;
+            overflow: auto;
+        }
+
+        .flex-container {
+            display: flex;
+            min-height: 300px;
+            background-color: white;
+            border-radius: 4px;
+            padding: 16px;
+        }
+
+        .flex-item {
+            background-color: #4ade80;
+            border: 1px solid #22c55e;
+            border-radius: 4px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            color: #052e16;
+            min-width: 80px;
+            min-height: 80px;
+        }
+
+        .code-display {
+            margin-top: 16px;
+            padding: 16px;
+            background-color: #1f2937;
+            color: #e5e7eb;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .explanation {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .resize-notice {
+            text-align: right;
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <div class="control-section">
+                <h3>Container Properties</h3>
+                <div class="control-group">
+                    <label for="flex-direction">Flex Direction:</label>
+                    <select id="flex-direction">
+                        <option value="row">Row</option>
+                        <option value="row-reverse">Row Reverse</option>
+                        <option value="column">Column</option>
+                        <option value="column-reverse">Column Reverse</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="justify-content">Justify Content:</label>
+                    <select id="justify-content">
+                        <option value="flex-start">Flex Start</option>
+                        <option value="flex-end">Flex End</option>
+                        <option value="center">Center</option>
+                        <option value="space-between">Space Between</option>
+                        <option value="space-around">Space Around</option>
+                        <option value="space-evenly">Space Evenly</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="align-items">Align Items:</label>
+                    <select id="align-items">
+                        <option value="stretch">Stretch</option>
+                        <option value="flex-start">Flex Start</option>
+                        <option value="flex-end">Flex End</option>
+                        <option value="center">Center</option>
+                        <option value="baseline">Baseline</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="flex-wrap">Flex Wrap:</label>
+                    <select id="flex-wrap">
+                        <option value="nowrap">No Wrap</option>
+                        <option value="wrap">Wrap</option>
+                        <option value="wrap-reverse">Wrap Reverse</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="gap">Gap:</label>
+                    <select id="gap">
+                        <option value="0">None</option>
+                        <option value="8px">Small (8px)</option>
+                        <option value="16px">Medium (16px)</option>
+                        <option value="24px">Large (24px)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3>Item Properties</h3>
+                <div class="control-group">
+                    <label for="items-count">Number of Items:</label>
+                    <input type="number" id="items-count" value="3" min="1" max="10">
+                </div>
+                <div class="control-group">
+                    <label for="flex-grow">Flex Grow (for all items):</label>
+                    <select id="flex-grow">
+                        <option value="0">0 (no growing)</option>
+                        <option value="1">1 (equal growth)</option>
+                        <option value="2">2 (double growth)</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="flex-shrink">Flex Shrink (for all items):</label>
+                    <select id="flex-shrink">
+                        <option value="1">1 (default shrink)</option>
+                        <option value="0">0 (no shrink)</option>
+                        <option value="2">2 (double shrink)</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="flex-basis">Flex Basis (for all items):</label>
+                    <select id="flex-basis">
+                        <option value="auto">Auto</option>
+                        <option value="0">0</option>
+                        <option value="100px">100px</option>
+                        <option value="200px">200px</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-area">
+            <div id="flex-container" class="flex-container">
+                <!-- Flex items will be generated by JavaScript -->
+            </div>
+        </div>
+        <div class="resize-notice">↘️ Demo area is resizable</div>
+
+        <div class="code-display" id="code-display"></div>
+
+        <div class="explanation">
+            <strong>Flexbox Properties Explained:</strong><br>
+            <strong>Container Properties:</strong><br>
+            • flex-direction: Defines the main axis direction<br>
+            • justify-content: Aligns items along the main axis<br>
+            • align-items: Aligns items along the cross axis<br>
+            • flex-wrap: Controls whether items can wrap to new lines<br>
+            • gap: Sets spacing between flex items<br>
+            <strong>Item Properties:</strong><br>
+            • flex-grow: How much items grow to fill available space<br>
+            • flex-shrink: How much items shrink when space is limited<br>
+            • flex-basis: Initial main size of items
+        </div>
+    </div>
+
+    <script>
+        // Get all control elements
+        const flexDirection = document.getElementById('flex-direction');
+        const justifyContent = document.getElementById('justify-content');
+        const alignItems = document.getElementById('align-items');
+        const flexWrap = document.getElementById('flex-wrap');
+        const gap = document.getElementById('gap');
+        const itemsCount = document.getElementById('items-count');
+        const flexGrow = document.getElementById('flex-grow');
+        const flexShrink = document.getElementById('flex-shrink');
+        const flexBasis = document.getElementById('flex-basis');
+
+        const flexContainer = document.getElementById('flex-container');
+        const codeDisplay = document.getElementById('code-display');
+
+        function generateFlexItems(count) {
+            flexContainer.innerHTML = '';
+            for (let i = 1; i <= count; i++) {
+                const item = document.createElement('div');
+                item.className = 'flex-item';
+                item.textContent = `${i}`;
+                flexContainer.appendChild(item);
+            }
+        }
+
+        function updateFlex() {
+            // Update container styles
+            flexContainer.style.flexDirection = flexDirection.value;
+            flexContainer.style.justifyContent = justifyContent.value;
+            flexContainer.style.alignItems = alignItems.value;
+            flexContainer.style.flexWrap = flexWrap.value;
+            flexContainer.style.gap = gap.value;
+
+            // Generate items
+            const count = parseInt(itemsCount.value);
+            generateFlexItems(count);
+
+            // Update item styles
+            const items = flexContainer.children;
+            for (let item of items) {
+                item.style.flexGrow = flexGrow.value;
+                item.style.flexShrink = flexShrink.value;
+                item.style.flexBasis = flexBasis.value;
+            }
+
+            // Update code display
+            const containerCSS = `.flex-container {
+    display: flex;
+    flex-direction: ${flexDirection.value};
+    justify-content: ${justifyContent.value};
+    align-items: ${alignItems.value};
+    flex-wrap: ${flexWrap.value};
+    gap: ${gap.value};
+}`;
+
+            const itemCSS = `.flex-item {
+    flex-grow: ${flexGrow.value};
+    flex-shrink: ${flexShrink.value};
+    flex-basis: ${flexBasis.value};
+}`;
+
+            codeDisplay.textContent = containerCSS + '\n\n' + itemCSS;
+        }
+
+        // Add event listeners to all controls
+        const controls = [
+            flexDirection, justifyContent, alignItems, flexWrap, gap,
+            itemsCount, flexGrow, flexShrink, flexBasis
+        ];
+
+        controls.forEach(control => {
+            control.addEventListener('change', updateFlex);
+        });
+
+        // Initialize flex container
+        updateFlex();
+    </script>
+</body>
+</html>

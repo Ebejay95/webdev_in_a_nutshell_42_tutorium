@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Sizing Demo</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 768px;
+            padding: 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .select-container {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        select, input[type="range"] {
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            width: 200px;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .demo-area {
+            background-color: #f3f4f6;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            min-height: 400px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .box-container {
+            flex: 1;
+            min-width: 280px;
+            background: white;
+            padding: 16px;
+            border-radius: 4px;
+        }
+
+        .box-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .demo-box {
+            background-color: #4ade80;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .demo-box.content-box {
+            box-sizing: content-box;
+        }
+
+        .demo-box.border-box {
+            box-sizing: border-box;
+        }
+
+        .box-dimensions {
+            margin-top: 12px;
+            font-size: 14px;
+            background: #f3f4f6;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .value-display {
+            font-size: 14px;
+            color: #4b5563;
+            margin-top: 4px;
+        }
+
+        /* Highlighted areas */
+        .content-area {
+            background-color: #4ade80;
+            position: relative;
+        }
+
+        .padding-area {
+            background-color: #60a5fa;
+            opacity: 0.3;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .border-area {
+            background-color: #f59e0b;
+            opacity: 0.3;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .legend {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 14px;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+
+        .explanation {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <div>
+                <label for="width-input">Width:</label>
+                <input type="range" id="width-input" min="50" max="200" value="100">
+                <div class="value-display" id="width-value">100px</div>
+            </div>
+            <div>
+                <label for="padding-input">Padding:</label>
+                <input type="range" id="padding-input" min="0" max="50" value="20">
+                <div class="value-display" id="padding-value">20px</div>
+            </div>
+            <div>
+                <label for="border-input">Border:</label>
+                <input type="range" id="border-input" min="0" max="20" value="4">
+                <div class="value-display" id="border-value">4px</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #4ade80"></div>
+                Content
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #60a5fa"></div>
+                Padding
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #f59e0b"></div>
+                Border
+            </div>
+        </div>
+
+        <div class="demo-area">
+            <div class="box-container">
+                <div class="box-title">content-box</div>
+                <div id="content-box" class="demo-box content-box">
+                    <div class="content-area">
+                        <div class="padding-area"></div>
+						box
+                        <div class="border-area"></div>
+                    </div>
+                </div>
+                <div class="box-dimensions" id="content-box-dimensions"></div>
+            </div>
+
+            <div class="box-container">
+                <div class="box-title">border-box</div>
+                <div id="border-box" class="demo-box border-box">
+                    <div class="content-area">
+                        <div class="padding-area"></div>
+						box
+                        <div class="border-area"></div>
+                    </div>
+                </div>
+                <div class="box-dimensions" id="border-box-dimensions"></div>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <strong>Box Sizing Explained:</strong><br>
+            <strong>content-box:</strong> Width and height only include the content. Padding and border are added to the specified dimensions.<br>
+            <strong>border-box:</strong> Width and height include content, padding, and border. The content area shrinks to accommodate padding and border.
+        </div>
+    </div>
+
+    <script>
+        const widthInput = document.getElementById('width-input');
+        const paddingInput = document.getElementById('padding-input');
+        const borderInput = document.getElementById('border-input');
+        
+        const widthValue = document.getElementById('width-value');
+        const paddingValue = document.getElementById('padding-value');
+        const borderValue = document.getElementById('border-value');
+        
+        const contentBox = document.getElementById('content-box');
+        const borderBox = document.getElementById('border-box');
+        
+        const contentBoxDimensions = document.getElementById('content-box-dimensions');
+        const borderBoxDimensions = document.getElementById('border-box-dimensions');
+
+        function updateBoxes() {
+            const width = parseInt(widthInput.value);
+            const padding = parseInt(paddingInput.value);
+            const border = parseInt(borderInput.value);
+
+            // Update value displays
+            widthValue.textContent = `${width}px`;
+            paddingValue.textContent = `${padding}px`;
+            borderValue.textContent = `${border}px`;
+
+            // Set dimensions for both boxes
+            const styles = {
+                width: `${width}px`,
+                padding: `${padding}px`,
+                border: `${border}px solid #1f2937`
+            };
+
+            Object.assign(contentBox.style, styles);
+            Object.assign(borderBox.style, styles);
+
+            // Calculate and display dimensions
+            const contentBoxTotal = width + (padding * 2) + (border * 2);
+            contentBoxDimensions.innerHTML = `
+                Total Width: ${contentBoxTotal}px<br>
+                Content: ${width}px<br>
+                Padding: ${padding}px × 2<br>
+                Border: ${border}px × 2
+            `;
+
+            const borderBoxContent = width - (padding * 2) - (border * 2);
+            borderBoxDimensions.innerHTML = `
+                Total Width: ${width}px<br>
+                Content: ${borderBoxContent}px<br>
+                Padding: ${padding}px × 2<br>
+                Border: ${border}px × 2
+            `;
+        }
+
+        // Add event listeners
+        widthInput.addEventListener('input', updateBoxes);
+        paddingInput.addEventListener('input', updateBoxes);
+        borderInput.addEventListener('input', updateBoxes);
+
+        // Initialize
+        updateBoxes();
+    </script>
+</body>
+</html>

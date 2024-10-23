@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Media Queries Demo</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .control-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        select, input {
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .demo-area {
+            position: relative;
+            background-color: #f3f4f6;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .demo-container {
+            width: 100%;
+            height: 500px;
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            resize: horizontal;
+            position: relative;
+        }
+
+        .width-indicator {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: #1f2937;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            z-index: 100;
+        }
+
+        .breakpoint-markers {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            pointer-events: none;
+        }
+
+        .breakpoint-marker {
+            position: absolute;
+            height: 100%;
+            width: 2px;
+            background-color: #ef4444;
+        }
+
+        .breakpoint-label {
+            position: absolute;
+            top: 8px;
+            font-size: 12px;
+            color: #ef4444;
+            transform: translateX(-50%);
+        }
+
+        .demo-content {
+            padding: 20px;
+        }
+
+        .demo-header {
+            padding: 20px;
+            background-color: #4ade80;
+            color: #052e16;
+            margin-bottom: 20px;
+        }
+
+        .demo-nav {
+            background-color: #60a5fa;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .demo-nav-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .demo-main {
+            display: flex;
+            gap: 20px;
+        }
+
+        .demo-sidebar {
+            background-color: #a78bfa;
+            padding: 20px;
+            color: white;
+        }
+
+        .demo-article {
+            background-color: #f3f4f6;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .code-display {
+            margin-top: 16px;
+            padding: 16px;
+            background-color: #1f2937;
+            color: #e5e7eb;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .explanation {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .resize-notice {
+            text-align: right;
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        /* Default styles for demo content */
+        .custom-demo-content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <div class="control-group">
+                <label>Add Breakpoint:</label>
+                <div style="display: flex; gap: 8px;">
+                    <input type="number" id="breakpoint-input" min="320" max="1920" step="1" placeholder="Width in px">
+                    <button onclick="addBreakpoint()" style="white-space: nowrap;">Add</button>
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Clear Breakpoints:</label>
+                <button onclick="clearBreakpoints()">Clear All</button>
+            </div>
+        </div>
+
+        <div class="demo-area">
+            <div class="demo-container" id="demo-container">
+                <div class="width-indicator" id="width-indicator">1200px</div>
+                <div class="breakpoint-markers" id="breakpoint-markers"></div>
+                <div class="custom-demo-content" id="demo-content">
+                    <header class="demo-header">
+                        <h1>Responsive Header</h1>
+                    </header>
+                    <nav class="demo-nav">
+                        <ul class="demo-nav-items">
+                            <li>Home</li>
+                            <li>About</li>
+                            <li>Services</li>
+                            <li>Contact</li>
+                        </ul>
+                    </nav>
+                    <main class="demo-main">
+                        <aside class="demo-sidebar">
+                            <h2>Sidebar</h2>
+                            <p>This sidebar will reposition based on screen width.</p>
+                        </aside>
+                        <article class="demo-article">
+                            <h2>Main Content</h2>
+                            <p>This content area will adjust its layout based on screen width.</p>
+                        </article>
+                    </main>
+                </div>
+            </div>
+        </div>
+        <div class="resize-notice">↔️ Demo container is resizable</div>
+
+        <div class="code-display" id="code-display"></div>
+
+        <div class="explanation">
+            <strong>Media Queries Explained:</strong><br>
+            • Media queries allow you to apply different styles based on device characteristics<br>
+            • Common breakpoints: Mobile (320-480px), Tablet (481-768px), Desktop (769px+)<br>
+            • Use min-width for mobile-first approach<br>
+            • Use max-width for desktop-first approach<br>
+            • Can combine multiple conditions with and/or
+        </div>
+    </div>
+
+    <script>
+        const demoContainer = document.getElementById('demo-container');
+        const widthIndicator = document.getElementById('width-indicator');
+        const breakpointMarkers = document.getElementById('breakpoint-markers');
+        const codeDisplay = document.getElementById('code-display');
+        const demoContent = document.getElementById('demo-content');
+
+        let breakpoints = new Set([768, 1024]); // Default breakpoints
+
+        function updateWidthIndicator() {
+            const width = demoContainer.offsetWidth;
+            widthIndicator.textContent = `${width}px`;
+            updateStyles(width);
+        }
+
+        function addBreakpoint() {
+            const input = document.getElementById('breakpoint-input');
+            const width = parseInt(input.value);
+            if (width && width >= 320 && width <= 1920) {
+                breakpoints.add(width);
+                updateBreakpointMarkers();
+                updateMediaQueries();
+                input.value = '';
+            }
+        }
+
+        function clearBreakpoints() {
+            breakpoints.clear();
+            updateBreakpointMarkers();
+            updateMediaQueries();
+        }
+
+        function updateBreakpointMarkers() {
+            breakpointMarkers.innerHTML = '';
+            breakpoints.forEach(width => {
+                const marker = document.createElement('div');
+                marker.className = 'breakpoint-marker';
+                marker.style.left = `${width}px`;
+
+                const label = document.createElement('div');
+                label.className = 'breakpoint-label';
+                label.style.left = `${width}px`;
+                label.textContent = `${width}px`;
+
+                breakpointMarkers.appendChild(marker);
+                breakpointMarkers.appendChild(label);
+            });
+        }
+
+        function updateMediaQueries() {
+            let css = `/* Base styles */
+.demo-main {
+    flex-direction: column;
+}
+
+.demo-nav-items {
+    flex-direction: column;
+}
+
+.demo-header h1 {
+    font-size: 20px;
+}
+
+`;
+
+            // Sort breakpoints for the code display
+            const sortedBreakpoints = Array.from(breakpoints).sort((a, b) => a - b);
+
+            sortedBreakpoints.forEach(breakpoint => {
+                css += `
+/* Media query for ${breakpoint}px and above */
+@media (min-width: ${breakpoint}px) {
+    .demo-main {
+        flex-direction: ${breakpoint >= 768 ? 'row' : 'column'};
+    }
+
+    .demo-nav-items {
+        flex-direction: row;
+    }
+
+    .demo-header h1 {
+        font-size: ${breakpoint >= 1024 ? '32px' : '24px'};
+    }
+
+    .demo-sidebar {
+        width: ${breakpoint >= 1024 ? '250px' : '200px'};
+    }
+}
+`;
+            });
+
+            codeDisplay.textContent = css;
+
+            // Apply the styles
+            const styleElement = document.getElementById('dynamic-styles');
+            if (styleElement) {
+                styleElement.remove();
+            }
+            const newStyle = document.createElement('style');
+            newStyle.id = 'dynamic-styles';
+            newStyle.textContent = css;
+            document.head.appendChild(newStyle);
+        }
+
+        function updateStyles(width) {
+            // Update styles based on current width
+            const mainElement = document.querySelector('.demo-main');
+            const navItems = document.querySelector('.demo-nav-items');
+            const header = document.querySelector('.demo-header h1');
+            const sidebar = document.querySelector('.demo-sidebar');
+
+            mainElement.style.flexDirection = width >= 768 ? 'row' : 'column';
+            navItems.style.flexDirection = width >= 768 ? 'row' : 'column';
+            header.style.fontSize = width >= 1024 ? '32px' : '24px';
+            sidebar.style.width = width >= 1024 ? '250px' : '200px';
+        }
+
+        // Initial setup
+        updateBreakpointMarkers();
+        updateMediaQueries();
+        updateWidthIndicator();
+
+        // Add resize observer
+        const resizeObserver = new ResizeObserver(entries => {
+            updateWidthIndicator();
+        });
+        resizeObserver.observe(demoContainer);
+    </script>
+</body>
+</html>
