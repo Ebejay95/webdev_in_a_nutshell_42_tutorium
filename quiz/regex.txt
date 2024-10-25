@@ -1,0 +1,140 @@
+What does the asterisk (*) quantifier mean in regex?
+Match exactly one
+Match zero or more occurrences
+Match one or more occurrences
+Match zero or one occurrence
+2
+The * quantifier matches zero or more occurrences of the preceding element.
+Which pattern matches any single digit?
+\n
+\d
+[0-9]
+Both B and C are correct
+4
+Both \d and [0-9] match any single digit character.
+What does the plus (+) quantifier do?
+Matches zero or more
+Matches exactly one
+Matches one or more
+Matches zero or one
+3
+The + quantifier matches one or more occurrences of the preceding element.
+Which pattern matches any whitespace character?
+\w
+\s
+\b
+\t
+2
+\s matches any whitespace character (space, tab, newline).
+What does the question mark (?) quantifier mean?
+Match one occurrence
+Match zero or one occurrence
+Match zero or more occurrences
+Match one or more occurrences
+2
+The ? quantifier matches zero or one occurrence of the preceding element.
+How do you match the start of a line?
+^
+$
+\A
+\a
+1
+The ^ anchor matches the start of a line.
+Which pattern matches any word character?
+\w
+\W
+\d
+\s
+1
+\w matches any word character (letter, digit, or underscore).
+What does the pattern [a-z] match?
+Any lowercase letter
+Any uppercase letter
+Any letter
+Any character
+1
+[a-z] matches any single lowercase letter.
+How do you make a pattern case-insensitive?
+Using /i flag
+Using [a-zA-Z]
+Using \w
+Using \i
+1
+The i flag makes the pattern case-insensitive (implementation may vary by language).
+What does the dot (.) metacharacter match?
+Any character except newline
+Any character including newline
+Only letters
+Only digits
+1
+The dot matches any single character except newline (unless modified).
+How do you match the end of a line?
+^
+$
+\Z
+\z
+2
+The $ anchor matches the end of a line.
+Which pattern matches a word boundary?
+\b
+\w
+\B
+\W
+1
+\b matches a word boundary (transition between word and non-word character).
+What does {3} mean in a regex pattern?
+Match at least 3
+Match at most 3
+Match exactly 3
+Match 3 or more
+3
+{3} matches exactly 3 occurrences of the preceding element.
+How do you match either "cat" or "dog"?
+cat|dog
+cat/dog
+(cat|dog)
+[cat|dog]
+1
+The | operator acts as an OR, matching either pattern.
+What does [^abc] mean in a regex?
+Match abc
+Match anything except abc
+Match the start of abc
+Match the end of abc
+2
+[^] creates a negated character set, matching anything except the specified characters.
+Which pattern matches an email address?
+\w+@\w+\.\w+
+[a-z]+@[a-z]+.[a-z]+
+Both A and B
+None of the above
+3
+Both patterns match basic email addresses (though they're simplified versions).
+What does {2,4} mean in a pattern?
+Match 2 or 4 times
+Match between 2 and 4 times
+Match at least 2 times
+Match at most 4 times
+2
+{2,4} matches between 2 and 4 occurrences of the preceding element.
+How do you capture a group for later reference?
+Using []
+Using ()
+Using {}
+Using <>
+2
+Parentheses () create a capturing group that can be referenced later.
+What does \b mean in a regular expression?
+Backspace
+Word boundary
+Line break
+Space
+2
+\b denotes a word boundary in regular expressions.
+What is the purpose of a non-capturing group (?:pattern)?
+To match without capturing
+To capture without matching
+To match case-insensitively
+To match greedily
+1
+Non-capturing groups match a pattern without creating a capture group.

@@ -1,0 +1,140 @@
+Welcher Port wird standardmäßig für FTP-Control verwendet?
+20
+21
+22
+23
+2
+FTP-Control verwendet Port 21 für Kommandos und Kontrollinformationen.
+Welcher Port wird für FTP-Data genutzt?
+20
+21
+22
+23
+1
+FTP-Data Transfer erfolgt über Port 20.
+Welcher der folgenden Ports wird für SSH verwendet?
+20
+21
+22
+23
+3
+SSH (Secure Shell) nutzt standardmäßig Port 22 für sichere Verbindungen.
+Welcher Port wird traditionell für Telnet genutzt?
+20
+21
+22
+23
+4
+Telnet verwendet Port 23, wird aber aus Sicherheitsgründen heute kaum noch genutzt.
+Welcher Port ist der Standard für SMTP?
+24
+25
+26
+27
+2
+SMTP (Simple Mail Transfer Protocol) verwendet Port 25 für E-Mail-Versand.
+Auf welchem Port läuft der DNS-Service?
+51
+52
+53
+54
+3
+DNS (Domain Name System) nutzt Port 53 für Namensauflösung.
+Welcher Port wird für HTTP verwendet?
+8080
+443
+8000
+80
+4
+HTTP (Hypertext Transfer Protocol) läuft standardmäßig auf Port 80.
+Welcher Port ist für POP3 reserviert?
+109
+110
+111
+112
+2
+POP3 (Post Office Protocol Version 3) nutzt Port 110 für E-Mail-Abruf.
+Welcher Port wird für IMAP verwendet?
+141
+142
+143
+144
+3
+IMAP (Internet Message Access Protocol) läuft auf Port 143.
+Welcher Port ist für HTTPS reserviert?
+440
+441
+442
+443
+4
+HTTPS (HTTP Secure) verwendet Port 443 für verschlüsselte Webverbindungen.
+Auf welchem Port läuft SNMP standardmäßig?
+160
+161
+162
+163
+2
+SNMP (Simple Network Management Protocol) nutzt Port 161.
+Welcher Port wird für LDAP verwendet?
+387
+388
+389
+390
+3
+LDAP (Lightweight Directory Access Protocol) läuft auf Port 389.
+Auf welchem Port läuft NetBIOS Name Service?
+135
+137
+139
+445
+2
+NetBIOS Name Service verwendet Port 137 für Windows-Netzwerke.
+Welcher Port ist für NetBIOS Session Service?
+135
+137
+139
+445
+3
+NetBIOS Session Service nutzt Port 139.
+Welcher Port wird für SMB/CIFS Direct über IP verwendet?
+135
+137
+139
+445
+4
+SMB/CIFS über IP (ohne NetBIOS) verwendet Port 445.
+Auf welchem Port läuft SMTP über SSL/TLS (SMTPS)?
+465
+466
+467
+468
+1
+SMTPS (Secure SMTP) verwendet Port 465 für verschlüsselte E-Mail-Übertragung.
+Welcher Port wird für secure LDAP (LDAPS) genutzt?
+635
+636
+637
+638
+2
+LDAPS (LDAP over SSL/TLS) läuft auf Port 636.
+Auf welchem Port läuft DHCP Server?
+66
+67
+68
+69
+2
+DHCP Server nutzt Port 67 (DHCP Client verwendet Port 68).
+Welcher Port wird für DHCP Client verwendet?
+66
+67
+68
+69
+3
+DHCP Client kommuniziert über Port 68.
+Was läuft standardmäßig auf Port 69?
+TFTP
+FTP
+SFTP
+FTPS
+1
+TFTP (Trivial File Transfer Protocol) verwendet Port 69.

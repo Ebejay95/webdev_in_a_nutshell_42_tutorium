@@ -1,0 +1,70 @@
+How do you create and trigger a custom event?
+element.trigger('customEvent')
+element.dispatchEvent(new CustomEvent('customEvent'))
+element.emit('customEvent')
+element.fireEvent('customEvent')
+2
+CustomEvent and dispatchEvent are used to create and trigger custom events.
+Which property gets the computed CSS values of an element?
+element.style
+window.getComputedStyle(element)
+element.computedStyle
+element.getCss()
+2
+getComputedStyle returns the computed CSS values of an element.
+How do you check if an element is visible in the viewport?
+element.isVisible()
+element.getBoundingClientRect()
+element.checkVisibility()
+element.inViewport()
+2
+getBoundingClientRect provides information about element's position relative to viewport.
+What's the correct way to handle event capturing instead of bubbling?
+element.addEventListener('click', handler, true)
+element.captureEvent('click', handler)
+element.addEventCapture('click', handler)
+element.on('click', handler, {capture: true})
+1
+The third parameter of addEventListener enables capture phase handling.
+How do you create a document fragment?
+document.createFragment()
+new DocumentFragment()
+document.createDocumentFragment()
+Fragment.create()
+3
+createDocumentFragment creates a minimal document object for efficient DOM manipulation.
+Which method inserts content after an element?
+element.after(content)
+element.insertAfter(content)
+element.append(content)
+element.addAfter(content)
+1
+The after() method inserts content after an element.
+How do you monitor DOM changes?
+new DOMObserver()
+new MutationObserver()
+document.observe()
+DOM.watch()
+2
+MutationObserver is used to watch for changes in the DOM.
+What's the correct way to get all data attributes?
+element.data
+element.getDataAttributes()
+element.dataset
+element.getAllData()
+3
+dataset provides access to all data-* attributes of an element.
+How do you measure an element's true height including padding and border?
+element.height
+element.offsetHeight
+element.clientHeight
+element.scrollHeight
+2
+offsetHeight includes padding and border in the measurement.
+Which method scrolls an element into view?
+element.scrollTo()
+element.scrollIntoView()
+element.bringIntoView()
+element.show()
+2
+scrollIntoView scrolls the element into the visible area of the viewport.

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form JSON Preview</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .form-section {
+            background-color: #f3f4f6;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #374151;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #60a5fa;
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+        }
+
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .checkbox-item,
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .json-preview {
+            background-color: #1f2937;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+
+        button {
+            background-color: #4ade80;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #22c55e;
+        }
+
+        .range-value {
+            text-align: center;
+            font-size: 14px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .validation-error {
+            color: #ef4444;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        input:invalid + .validation-error {
+            display: block;
+        }
+
+        .color-preview {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="form-section">
+                <form id="demo-form" onsubmit="return false;">
+                    <!-- Text inputs -->
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required
+                               pattern="[A-Za-z ]{2,}"
+                               title="Name should contain only letters">
+                        <div class="validation-error">Please enter a valid name</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="validation-error">Please enter a valid email address</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" 
+                               pattern="[0-9]{10}"
+                               title="Please enter a valid 10-digit phone number">
+                        <div class="validation-error">Please enter a valid phone number</div>
+                    </div>
+
+                    <!-- Number and Range -->
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" min="0" max="150">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="satisfaction">Satisfaction Level</label>
+                        <input type="range" id="satisfaction" name="satisfaction" 
+                               min="0" max="100" step="10" value="50">
+                        <div class="range-value" id="satisfaction-value">50</div>
+                    </div>
+
+                    <!-- Select -->
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <select id="country" name="country">
+                            <option value="">Select a country</option>
+                            <option value="us">United States</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="ca">Canada</option>
+                            <option value="au">Australia</option>
+                        </select>
+                    </div>
+
+                    <!-- Radio buttons -->
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="gender" value="male"> Male
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="gender" value="female"> Female
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="gender" value="other"> Other
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Checkboxes -->
+                    <div class="form-group">
+                        <label>Interests</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="interests" value="sports"> Sports
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="interests" value="music"> Music
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="interests" value="reading"> Reading
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Date and Time -->
+                    <div class="form-group">
+                        <label for="birthdate">Birth Date</label>
+                        <input type="date" id="birthdate" name="birthdate">
+                    </div>
+
+                    <!-- Color -->
+                    <div class="form-group">
+                        <label for="favorite-color">Favorite Color</label>
+                        <input type="color" id="favorite-color" name="favoriteColor" value="#4ade80">
+                        <span id="color-preview" class="color-preview"></span>
+                    </div>
+
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label for="comments">Comments</label>
+                        <textarea id="comments" name="comments" rows="4"></textarea>
+                    </div>
+
+                    <button type="submit">Submit Form (Prevented)</button>
+                </form>
+            </div>
+
+            <div class="json-preview" id="json-preview">
+                // JSON preview will appear here...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('demo-form');
+        const jsonPreview = document.getElementById('json-preview');
+        const satisfactionInput = document.getElementById('satisfaction');
+        const satisfactionValue = document.getElementById('satisfaction-value');
+        const colorInput = document.getElementById('favorite-color');
+        const colorPreview = document.getElementById('color-preview');
+
+        // Update satisfaction value display
+        satisfactionInput.addEventListener('input', (e) => {
+            satisfactionValue.textContent = e.target.value;
+            updateJsonPreview();
+        });
+
+        // Update color preview
+        colorInput.addEventListener('input', (e) => {
+            colorPreview.style.backgroundColor = e.target.value;
+            updateJsonPreview();
+        });
+
+        // Initialize color preview
+        colorPreview.style.backgroundColor = colorInput.value;
+
+        function getFormData() {
+            const formData = new FormData(form);
+            const data = {};
+
+            // Handle multiple checkboxes
+            const interests = [];
+            formData.forEach((value, key) => {
+                if (key === 'interests') {
+                    interests.push(value);
+                } else {
+                    data[key] = value;
+                }
+            });
+
+            if (interests.length > 0) {
+                data.interests = interests;
+            }
+
+            return data;
+        }
+
+        function updateJsonPreview() {
+            const data = getFormData();
+            jsonPreview.textContent = JSON.stringify(data, null, 2);
+        }
+
+        // Add event listeners to all form elements
+        form.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('input', updateJsonPreview);
+            element.addEventListener('change', updateJsonPreview);
+        });
+
+        // Prevent form submission
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Form submission prevented! Check the JSON preview for the data that would be sent.');
+        });
+
+        // Initialize JSON preview
+        updateJsonPreview();
+    </script>
+</body>
+</html>

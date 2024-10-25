@@ -1,0 +1,70 @@
+What does a lookbehind assertion (?<=pattern) do?
+Matches if pattern precedes
+Matches if pattern follows
+Matches the pattern
+Ignores the pattern
+1
+Lookbehind checks if a pattern precedes the current position without including it in the match.
+What's the difference between greedy and lazy quantifiers?
+Greedy is faster
+Lazy matches minimum possible
+Greedy uses more memory
+Lazy is more accurate
+2
+Lazy quantifiers (using ?) match as little as possible, while greedy match as much as possible.
+How do you match a literal asterisk?
+*
+\*
+[*]
+Both B and C are correct
+4
+Both \* and [*] match a literal asterisk character.
+What does (?=pattern) do in regex?
+Positive lookbehind
+Positive lookahead
+Negative lookahead
+Negative lookbehind
+2
+(?=pattern) is a positive lookahead assertion, matching if pattern follows.
+Which pattern matches a valid IPv4 address?
+\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}
+[0-9.]{7,15}
+Both A and B
+Neither A nor B
+1
+The first pattern matches the format of IPv4 addresses (though it allows invalid numbers).
+What does \G assert in regex?
+End of previous match
+Start of string
+Word boundary
+Line break
+1
+\G asserts the position at the end of the previous match or start of string.
+How do you match Unicode properties?
+\p{Property}
+\u{Property}
+\P{Property}
+Property
+1
+\p{Property} matches Unicode character properties.
+What's the purpose of atomic grouping (?>pattern)?
+To improve performance
+To prevent backtracking
+To capture groups
+Both A and B
+4
+Atomic groups improve performance by preventing backtracking.
+How do you match a word containing exactly 5 characters?
+\w{5}
+^\w{5}$
+\b\w{5}\b
+[a-zA-Z]{5}
+3
+\b\w{5}\b matches a word boundary, exactly 5 word characters, and another word boundary.
+What does (?<!pattern) do?
+Negative lookbehind
+Negative lookahead
+Positive lookbehind
+Positive lookahead
+1
+(?<!pattern) is a negative lookbehind, matching if pattern doesn't precede.

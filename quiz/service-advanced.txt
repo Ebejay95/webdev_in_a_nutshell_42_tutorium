@@ -1,0 +1,70 @@
+What is the purpose of a DNS resolver?
+To store DNS records
+To handle DNS queries from clients
+To manage domain registration
+To secure DNS traffic
+2
+DNS resolvers handle client queries and interact with DNS servers to resolve domain names.
+How does connection pooling in databases work?
+It increases database size
+It manages multiple simultaneous connections
+It improves data security
+It compresses data
+2
+Connection pooling maintains a cache of database connections for reuse, improving performance.
+What is the purpose of a message queue?
+To store messages permanently
+To decouple applications through asynchronous communication
+To encrypt messages
+To compress messages
+2
+Message queues enable asynchronous communication between different parts of a system.
+What is the main benefit of using CDN (Content Delivery Network)?
+Better security
+Faster content delivery through geographical distribution
+Improved database performance
+Enhanced email delivery
+2
+CDNs distribute content across multiple locations to reduce latency and improve delivery speed.
+How does server-side caching differ from client-side caching?
+Server caching is faster
+Server caching is controlled by the server and shared among clients
+Server caching is more secure
+Server caching uses less memory
+2
+Server-side caching serves multiple clients, while client-side caching is specific to each user.
+What is the purpose of a service registry?
+To register domain names
+To track available services and their locations
+To manage security
+To handle email routing
+2
+Service registries maintain information about available services in a distributed system.
+How does mutual TLS (mTLS) enhance service security?
+By using stronger passwords
+By requiring both client and server certificates
+By encrypting passwords
+By blocking all unknown traffic
+2
+mTLS requires both client and server to present certificates for authentication.
+What is the main purpose of service discovery?
+To find new websites
+To automatically locate and connect to services
+To discover security threats
+To find network issues
+2
+Service discovery enables services to automatically find and communicate with each other.
+What role does a reverse proxy play in microservices?
+Database management
+API gateway and load balancing
+Email routing
+User authentication
+2
+Reverse proxies often act as API gateways in microservices architectures.
+How does horizontal scaling differ from vertical scaling?
+Horizontal is always better
+Horizontal adds more machines, vertical adds more resources
+Horizontal is more expensive
+Horizontal is more secure
+2
+Horizontal scaling adds more machines, while vertical scaling adds more resources to existing machines.

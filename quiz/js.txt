@@ -1,0 +1,140 @@
+What is the correct way to declare a variable that can be reassigned?
+var x = 5
+const x = 5
+let x = 5
+function x = 5
+3
+let allows you to declare variables that can be reassigned, introduced in ES6.
+Which of these is a correct way to write a JavaScript comment?
+# This is a comment
+// This is a comment
+<!-- This is a comment -->
+/* This is a comment
+1
+// creates a single line comment in JavaScript.
+What is the result of typeof null?
+"null"
+"undefined"
+"object"
+"number"
+3
+typeof null returns "object" - this is a known quirk in JavaScript.
+How do you create an array in JavaScript?
+array()
+{1,2,3}
+[1,2,3]
+<1,2,3>
+3
+Square brackets [] are used to create arrays in JavaScript.
+Which method adds elements to the end of an array?
+push()
+append()
+add()
+insert()
+1
+push() adds one or more elements to the end of an array.
+What is the correct way to check if two values are equal in both type and value?
+x = y
+x == y
+x === y
+x.equals(y)
+3
+=== checks both value and type equality (strict equality).
+How do you write an if statement in JavaScript?
+if (x == 5) then
+if x == 5
+if (x == 5)
+if x = 5
+3
+if statements use parentheses around the condition in JavaScript.
+What is the correct way to write a function in JavaScript?
+function myFunction()
+def myFunction()
+void myFunction()
+func myFunction()
+1
+function keyword is used to declare functions in JavaScript.
+Which operator is used for string concatenation?
+&
++
+.
+,
+2
+The + operator concatenates strings in JavaScript.
+How do you access the first character of a string?
+string[0]
+string.first()
+string.charAt(0)
+Both A and C are correct
+4
+Both string[0] and string.charAt(0) access the first character.
+What is the result of 5 + "5"?
+10
+"55"
+Error
+undefined
+2
+When + is used with a string, it performs concatenation instead of addition.
+How do you check if a variable is undefined?
+typeof x === "undefined"
+x === undefined
+x.isUndefined()
+Both A and B are correct
+4
+Both typeof x === "undefined" and x === undefined work to check for undefined.
+Which loop will execute at least once?
+for loop
+while loop
+do...while loop
+foreach loop
+3
+do...while loops always execute at least once before checking the condition.
+What is the correct way to write a for loop?
+for (i = 0; i <= 5)
+for (i <= 5; i++)
+for (i = 0; i <= 5; i++)
+for (i in 5)
+3
+for loops need initialization, condition, and increment/decrement parts.
+How do you round a number to the nearest integer?
+Math.round(x)
+Math.floor(x)
+round(x)
+x.round()
+1
+Math.round() rounds a number to the nearest integer.
+What is the result of Boolean("")?
+true
+false
+undefined
+null
+2
+Empty strings are falsy values in JavaScript.
+How do you declare a constant variable?
+const x = 5
+constant x = 5
+let x = 5
+var x = 5
+1
+const declares variables that cannot be reassigned.
+What is the correct way to check if something is an array?
+typeof arr === "array"
+arr.isArray()
+Array.isArray(arr)
+arr instanceof Array
+3
+Array.isArray() is the most reliable way to check if something is an array.
+How do you convert a string to a number?
+Number("123")
+parseInt("123")
++"123"
+All of the above
+4
+All these methods can convert strings to numbers in JavaScript.
+Which method removes the last element from an array?
+pop()
+remove()
+delete()
+slice()
+1
+pop() removes and returns the last element of an array.

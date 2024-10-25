@@ -1,0 +1,144 @@
+What is the correct way to select an element by its ID?
+document.querySelector('#myId')
+document.getElementById('myId')
+Both A and B are correct
+document.getElement('#myId')
+3
+Both querySelector('#myId') and getElementById('myId') can select elements by ID.
+Which method selects all elements with a specific class name?
+document.getClass()
+document.queryAll('.className')
+document.getElementsByClassName('className')
+document.selectClass('className')
+3
+getElementsByClassName returns a live HTMLCollection of elements with the given class.
+How do you add a click event listener to an element?
+element.click = function()
+element.addEventListener('click', function())
+element.onClick = function()
+element.addEvent('click', function())
+2
+addEventListener is the modern way to attach event listeners to elements.
+What is the correct way to change an element's text content?
+element.text = 'New text'
+element.textContent = 'New text'
+element.innerText = 'New text'
+Both B and C are correct
+4
+Both textContent and innerText can be used to change text, with slight differences.
+How do you add a new class to an element?
+element.class += 'newClass'
+element.className += 'newClass'
+element.classList.add('newClass')
+element.addClassName('newClass')
+3
+classList.add is the modern way to add classes to elements.
+Which property gives you all child nodes, including text nodes?
+element.children
+element.childNodes
+element.childElements
+element.nodes
+2
+childNodes returns all child nodes, including text and comment nodes.
+How do you create a new element?
+document.createNode('div')
+document.create('div')
+document.createElement('div')
+document.newElement('div')
+3
+createElement creates a new element of the specified type.
+What's the correct way to remove an element from the DOM?
+element.remove()
+element.delete()
+element.parentNode.removeChild(element)
+Both A and C are correct
+4
+Both remove() and parentNode.removeChild() can remove elements from the DOM.
+How do you set an attribute on an element?
+element.setAttribute('src', 'image.jpg')
+element.setAttr('src', 'image.jpg')
+element.attribute('src', 'image.jpg')
+element.attr('src', 'image.jpg')
+1
+setAttribute is used to set attribute values on elements.
+Which property gets or sets the HTML content of an element?
+element.HTML
+element.content
+element.innerHTML
+element.htmlContent
+3
+innerHTML gets or sets the HTML content inside an element.
+How do you select the parent element of a node?
+node.parent
+node.parentElement
+node.parentNode
+Both B and C are correct
+4
+Both parentElement and parentNode can access a node's parent.
+What's the correct way to select all paragraphs inside a div?
+div.querySelectorAll('p')
+div.getElementsByTagName('p')
+Both A and B are correct
+div.selectAll('p')
+3
+Both querySelectorAll and getElementsByTagName can select elements by tag name.
+How do you prevent a form submission event?
+event.preventDefault()
+event.stop()
+event.stopSubmit()
+form.preventSubmit()
+1
+preventDefault() stops the default action of an event from occurring.
+Which property returns the element that triggered an event?
+event.element
+event.target
+event.source
+event.origin
+2
+event.target refers to the element that triggered the event.
+How do you check if an element has a specific class?
+element.hasClass('className')
+element.classList.contains('className')
+element.className.includes('className')
+element.classes.has('className')
+2
+classList.contains checks if an element has a specific class.
+What's the correct way to select the next sibling element?
+element.next
+element.nextSibling
+element.nextElementSibling
+element.nextNode
+3
+nextElementSibling gets the next element sibling, skipping text nodes.
+How do you clone an element?
+element.clone()
+element.copy()
+element.cloneNode(true)
+element.duplicate()
+3
+cloneNode(true) creates a deep clone of an element and its children.
+Which method removes a class from an element?
+element.classList.remove('className')
+element.className.remove('className')
+element.removeClass('className')
+element.classes.delete('className')
+1
+classList.remove is used to remove a class from an element.
+How do you set multiple styles at once?
+element.style = {color: 'red', fontSize: '16px'}
+element.css({color: 'red', fontSize: '16px'})
+Object.assign(element.style, {color: 'red', fontSize: '16px'})
+element.setStyles({color: 'red', fontSize: '16px'})
+3
+Object.assign can be used to set multiple styles at once.
+What's the correct way to delegate events to future elements?
+parentElement.addEventListener('click', function(e) {
+  if (e.target.matches('.className')) {
+    // handle event
+  }
+})
+parentElement.delegateEvent('click', '.className')
+parentElement.on('click', '.className')
+parentElement.addEventToChildren('click')
+1
+Event delegation uses event bubbling to handle events on future elements.

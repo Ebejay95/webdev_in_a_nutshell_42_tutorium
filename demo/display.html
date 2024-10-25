@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Display Demo</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 768px;
+            padding: 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .select-container {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        select {
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            width: 200px;
+        }
+
+        .demo-area {
+            background-color: #f3f4f6;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            min-height: 300px;
+        }
+
+        .demo-box {
+            background-color: #4ade80;
+            border: 1px solid #d1d5db;
+            padding: 8px;
+            margin: 4px;
+            width: 120px;
+            height: 80px;
+            text-align: center;
+        }
+
+        /* Display classes that will be toggled via JavaScript */
+        .display-block {
+            display: block;
+        }
+
+        .display-inline {
+            display: inline;
+        }
+
+        .display-inline-block {
+            display: inline-block;
+        }
+
+        .display-flex {
+            display: flex;
+        }
+
+        .display-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .display-none {
+            display: none;
+        }
+
+        /* Container styles for flex and grid children */
+        .demo-child {
+            background-color: #60a5fa;
+            border: 1px solid #3b82f6;
+            padding: 8px;
+            margin: 4px;
+            text-align: center;
+        }
+
+        .explanation {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="select-container">
+            <label for="display-select">Select Display Property:</label>
+            <select id="display-select">
+                <option value="block">Block</option>
+                <option value="inline">Inline</option>
+                <option value="inline-block">Inline Block</option>
+                <option value="flex">Flex</option>
+                <option value="grid">Grid</option>
+                <option value="none">None</option>
+            </select>
+        </div>
+
+        <div class="demo-area" id="demo-area">
+            <!-- Content will be updated via JavaScript -->
+        </div>
+
+        <div class="explanation" id="explanation">
+            <!-- Explanation will be updated via JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        const displaySelect = document.getElementById('display-select');
+        const demoArea = document.getElementById('demo-area');
+        const explanation = document.getElementById('explanation');
+
+        const displayExplanations = {
+            block: "Block elements start on a new line and take up the full width available. You can set width and height properties.",
+            inline: "Inline elements only take up as much width as necessary and don't force new lines. Width and height properties have no effect.",
+            "inline-block": "Inline-block combines both behaviors: elements can sit next to each other while respecting width and height properties.",
+            flex: "Flex creates a flexible container that can easily distribute space among items and align them.",
+            grid: "Grid creates a grid-based layout system with rows and columns.",
+            none: "Display: none removes the element from the document flow. The space is not preserved."
+        };
+
+        function createBlockDemo() {
+            return `
+                <div class="demo-box display-block">Block Box 1</div>
+                <div class="demo-box display-block">Block Box 2</div>
+                <div class="demo-box display-block">Block Box 3</div>
+            `;
+        }
+
+        function createInlineDemo() {
+            return `
+                <div class="demo-box display-inline">Inline Box 1</div>
+                <div class="demo-box display-inline">Inline Box 2</div>
+                <div class="demo-box display-inline">Inline Box 3</div>
+            `;
+        }
+
+        function createInlineBlockDemo() {
+            return `
+                <div class="demo-box display-inline-block">Inline-Block Box 1</div>
+                <div class="demo-box display-inline-block">Inline-Block Box 2</div>
+                <div class="demo-box display-inline-block">Inline-Block Box 3</div>
+            `;
+        }
+
+        function createFlexDemo() {
+            return `
+                <div class="display-flex" style="gap: 8px;">
+                    <div class="demo-child">Flex Item 1</div>
+                    <div class="demo-child">Flex Item 2</div>
+                    <div class="demo-child">Flex Item 3</div>
+                </div>
+            `;
+        }
+
+        function createGridDemo() {
+            return `
+                <div class="display-grid">
+                    <div class="demo-child">Grid Item 1</div>
+                    <div class="demo-child">Grid Item 2</div>
+                    <div class="demo-child">Grid Item 3</div>
+                    <div class="demo-child">Grid Item 4</div>
+                    <div class="demo-child">Grid Item 5</div>
+                    <div class="demo-child">Grid Item 6</div>
+                </div>
+            `;
+        }
+
+        function createNoneDemo() {
+            return `
+                <div class="demo-box">Visible Box</div>
+                <div class="demo-box display-none">This box is hidden</div>
+                <div class="demo-box">Visible Box</div>
+            `;
+        }
+
+        function updateDemo(displayValue) {
+            switch(displayValue) {
+                case 'block':
+                    demoArea.innerHTML = createBlockDemo();
+                    break;
+                case 'inline':
+                    demoArea.innerHTML = createInlineDemo();
+                    break;
+                case 'inline-block':
+                    demoArea.innerHTML = createInlineBlockDemo();
+                    break;
+                case 'flex':
+                    demoArea.innerHTML = createFlexDemo();
+                    break;
+                case 'grid':
+                    demoArea.innerHTML = createGridDemo();
+                    break;
+                case 'none':
+                    demoArea.innerHTML = createNoneDemo();
+                    break;
+            }
+            explanation.textContent = displayExplanations[displayValue];
+        }
+
+        displaySelect.addEventListener('change', (e) => {
+            updateDemo(e.target.value);
+        });
+
+        // Initialize with block display
+        updateDemo('block');
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+What is the primary purpose of DNS (Domain Name System)?
+To secure domain names
+To convert domain names to IP addresses
+To manage email addresses
+To control network traffic
+2
+DNS translates human-readable domain names into IP addresses that computers can understand.
+How does SMTP (Simple Mail Transfer Protocol) differ from POP3?
+SMTP receives mail, POP3 sends mail
+SMTP sends mail, POP3 receives mail
+They are the same protocol
+SMTP is newer than POP3
+2
+SMTP is used to send email between servers, while POP3 is used by clients to retrieve email.
+What is the main difference between HTTP and HTTPS?
+Speed
+Security
+Reliability
+Compatibility
+2
+HTTPS encrypts data between client and server using SSL/TLS, while HTTP transmits in plaintext.
+What is the purpose of DHCP (Dynamic Host Configuration Protocol)?
+To secure networks
+To automatically assign IP addresses
+To manage domain names
+To control bandwidth
+2
+DHCP automatically provides IP addresses and network configuration to devices on a network.
+What is the key difference between FTP and SFTP?
+Speed
+Security
+File size limits
+Connection limits
+2
+SFTP adds encryption and security features by running over SSH, unlike standard FTP.
+What is the main purpose of NTP (Network Time Protocol)?
+To manage network timing
+To synchronize clocks between computers
+To schedule network tasks
+To measure network speed
+2
+NTP ensures accurate time synchronization between computers on a network.
+What is the primary function of LDAP?
+To manage files
+To authenticate users
+To provide directory services
+To control network access
+3
+LDAP provides directory services, storing and organizing information about network resources and users.
+How does UDP differ from TCP?
+UDP is newer
+UDP is connectionless and doesn't guarantee delivery
+UDP is more secure
+UDP is always faster
+2
+UDP is connectionless and doesn't guarantee packet delivery, unlike TCP which ensures reliable delivery.
+What is the main purpose of SNMP?
+To secure networks
+To monitor and manage network devices
+To transfer files
+To route network traffic
+2
+SNMP is used to monitor and manage network devices and their performance.
+What is the key difference between POP3 and IMAP?
+POP3 is newer
+IMAP keeps mail on the server
+POP3 is more secure
+IMAP is faster
+2
+IMAP keeps emails on the server and syncs across devices, while POP3 typically downloads and removes them.
+What is the primary purpose of SSH?
+To share files
+To provide secure remote access
+To manage emails
+To browse websites
+2
+SSH provides secure encrypted connections for remote access and file transfers.
+How does HTTPS achieve security?
+By using faster connections
+Through encryption using SSL/TLS
+By using special ports
+By limiting access
+2
+HTTPS uses SSL/TLS protocols to encrypt data and verify server identity.
+What is the main function of a proxy server?
+To speed up the internet
+To act as an intermediary for requests
+To store emails
+To manage domains
+2
+Proxy servers act as intermediaries between clients and other servers, often providing caching and security.
+What is the purpose of NGINX or Apache?
+To manage databases
+To serve web content
+To handle emails
+To manage DNS
+2
+Web servers like NGINX and Apache serve web content and handle HTTP requests.
+What is the main purpose of a load balancer?
+To increase internet speed
+To distribute traffic across servers
+To store data
+To manage security
+2
+Load balancers distribute incoming network traffic across multiple servers to ensure reliability.
+What is the key function of MySQL or PostgreSQL?
+To serve web pages
+To manage databases
+To handle email
+To control network traffic
+2
+Database servers like MySQL and PostgreSQL manage structured data storage and retrieval.
+What is the primary purpose of Redis?
+To serve web pages
+To cache data
+To manage emails
+To handle security
+2
+Redis is an in-memory data structure store, used primarily as a cache or message broker.
+What role does Memcached play?
+Database management
+Caching system
+Email handling
+Security management
+2
+Memcached is a distributed memory caching system used to speed up dynamic applications.
+What is the main purpose of RabbitMQ?
+To manage databases
+To handle message queuing
+To serve web pages
+To manage security
+2
+RabbitMQ is a message broker that handles message queuing and distribution between services.
+Which problem does a reverse proxy solve?
+Database management
+Load distribution and security
+Email handling
+Time synchronization
+2
+Reverse proxies provide load balancing, security, and caching for backend servers.
